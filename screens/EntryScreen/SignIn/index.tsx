@@ -9,35 +9,47 @@ import Icon from "@/components/Icon";
 import styles from "./SignIn.module.sass";
 import { useAuthStore } from "@/store/authStore/authStore";
 import axios from "axios";
-// import { useRouter } from "next/router";
+import { sendOtp } from "services/api/auth/auth.ts";
+import { useRouter } from "next/navigation";
 
 type SignInProps = {
   onClick: () => void;
   onResetPassword: () => void;
+  setOtp: () => void;
+  mobileNumber: string;
+  setMobilenumber: (value: string) => void;
 };
 
-const SignIn = ({ onClick, onResetPassword }: SignInProps) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const idTooltip = useId();
+const SignIn = ({
+  onClick,
+  onResetPassword,
+  setOtp,
+  mobileNumber,
+  setMobilenumber,
+}: SignInProps) => {
+  // const [password, setPassword] = useState("");
+  // const idTooltip = useId();
 
-  //   const router = useRouter();
-  const verifyOtp = async () => {
+  // const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  const SendOtp = async () => {
+    setLoading(true);
     try {
-      const res = await axios.post(
-        "https://poshinsta.ogoul.com/api/check_otp",
-        {
-          mobile: "4673974998",
-          country_code: "+1",
-          otp: "1234",
-        }
-      );
-
-      const token = res.data.token;
-      useAuthStore.getState().setToken(token); // ✅ Save token
-      router?.push("/");
+      const response = await sendOtp({
+        mobile: mobileNumber,
+        country_code: "+1",
+      });
+      console.log("OTP sent successfully:", response);
+      if (response?.status === "success") {
+        // Show OTP entry screen
+        setOtp(true);
+      }
+      // Handle success, e.g., show a success message or navigate to OTP verification page
     } catch (error) {
-      console.error(error);
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -45,13 +57,16 @@ const SignIn = ({ onClick, onResetPassword }: SignInProps) => {
     <form action="" onSubmit={(e) => e.preventDefault()}>
       <Field
         className={styles.field}
-        placeholder="Email"
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Mobile number "
+        type="text"
+        value={mobileNumber}
+        onChange={(e) =>
+          //only allow numbers and limit to 10 digits
+          setMobilenumber(e.target.value.replace(/[^0-9]/g, ""))
+        }
         required
       />
-      <div className={styles.field}>
+      {/* <div className={styles.field}>
         <Field
           placeholder="Password"
           type="password"
@@ -69,9 +84,13 @@ const SignIn = ({ onClick, onResetPassword }: SignInProps) => {
           <Icon name="question" />
         </button>
         <Tooltip id={idTooltip} />
-      </div>
+      </div> */}
       <div className={styles.btns}>
-        <button onClick={verifyOtp} className={cn("button", styles.button)}>
+        <button
+          disabled={loading}
+          onClick={SendOtp}
+          className={cn("button", styles.button)}
+        >
           Sign in
         </button>
         <Link className={cn("button", styles.button)} href="/">

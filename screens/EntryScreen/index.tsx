@@ -6,6 +6,7 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import ResetPassword from "./ResetPassword";
 import styles from "./EntryScreen.module.sass";
+import OtpVerify from "@/components/Entry/OtpVerify";
 
 const avatars = [
   "/images/avatar-1.png",
@@ -19,7 +20,21 @@ const avatars = [
 const EntryScreen = () => {
   const [entry, setEntry] = useState(true);
   const [resetPassword, setResetPassword] = useState(false);
+  const [showOTP, setShowOTP] = useState(false);
+  const [mobileNumber, setMobilenumber] = useState("4673974998");
 
+  const handleOTPVerify = (otpValue) => {
+    // Handle OTP verification
+    console.log("OTP entered:", otpValue);
+    // Add your OTP verification logic here
+    // On success, redirect to dashboard or next step
+  };
+
+  const handleBackToSignIn = () => {
+    setShowOTP(false);
+    setEntry(true);
+    setResetPassword(false);
+  };
   return (
     <div className={styles.login}>
       <div className={styles.background}>
@@ -55,12 +70,27 @@ const EntryScreen = () => {
             <div className={styles.title}>
               {entry ? "Sign in to Bento" : "Bento Social"}
             </div>
-            {resetPassword ? (
+            {showOTP ? (
+              <div className={styles.otpContainer}>
+                <div className={styles.otpText}>
+                  Please enter the 4-digit code sent to your email
+                </div>
+
+                <OtpVerify
+                  mobileNumber={mobileNumber}
+                  onBack={handleBackToSignIn}
+                  onVerify={handleOTPVerify}
+                />
+              </div>
+            ) : resetPassword ? (
               <ResetPassword onClick={() => setResetPassword(false)} />
             ) : entry ? (
               <SignIn
                 onClick={() => setEntry(false)}
+                setOtp={() => setShowOTP(true)}
                 onResetPassword={() => setResetPassword(true)}
+                setMobilenumber={setMobilenumber}
+                mobileNumber={mobileNumber}
               />
             ) : (
               <SignUp onClick={() => setEntry(true)} />

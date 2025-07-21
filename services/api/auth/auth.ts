@@ -42,3 +42,9 @@ export const VerifyOtpDescope = async (payload: VerifyOtpDescopePayload) => {
   const response = await axiosInstance.post("/api/verifyotp");
   return response.data;
 };
+
+// Check Otp:---
+export const checkOtp = async (payload: CheckOtpPayload) => {
+  const response = await axiosInstance.post("/api/check_otp", payload);
+  return response.data;
+};
