@@ -1,0 +1,126 @@
+@import @/styles/variables
+
+.folder
+    position: relative
+    display: flex
+    align-items: center
+    margin-top: 8px
+    padding: 12px
+    border-radius: 20px
+    background: rgba($n2, .02)
+    transition: all .2s
+    cursor: pointer
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 20px
+        pointer-events: none
+        border: 1.5px solid rgba(255, 255, 255, 0.1)
+        mask-image: linear-gradient(175deg, black, transparent 60%)
+        opacity: 0
+        transition: opacity .2s
+    &:hover
+        background: rgba($n2, .05)
+        .counter
+            opacity: 0
+        .actions
+            visibility: visible
+            opacity: 1
+    &.hide
+        opacity: 0.1
+        pointer-events: none
+    &.activeIcons
+        opacity: 1
+        pointer-events: all
+    &.active
+        background: rgba($n2, .1)
+        &:after
+            opacity: 1
+        .name
+            color: rgba($n2, .76)
+        .counter
+            color: rgba($n2, .47)
+    &.showActions
+        .actions
+            visibility: visible
+            opacity: 1
+            .body
+                visibility: visible
+                opacity: 1
+        .name
+            padding-right: 80px
+        .counter
+            opacity: 0
+
+.main
+    position: absolute
+    inset: 0
+    border-radius: 20px
+
+.image
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 44px
+    height: 44px
+    margin-right: 16px
+    background: rgba($n2, .05)
+    border-radius: 50%
+
+.name
+    width: calc(100% - 60px)
+    padding-right: 16px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    +base-2m
+    color: rgba($n2, .56)
+    transition: color .2s
+
+.counter
+    flex-shrink: 0
+    min-width: 20px
+    text-align: center
+    +base-2r
+    color: rgba($n2, .35)
+    transition: all .2s
+    +m
+        display: none
+
+.actions
+    position: absolute
+    z-index: 1
+    top: 22px
+    right: 10px
+    visibility: hidden
+    opacity: 0
+    font-size: 0
+    transition: all .2s
+    +m
+        visibility: visible
+        opacity: 1
+    .head
+        font-size: 0
+        svg
+            fill: rgba($n2, .36)
+            transition: fill .2s
+    .body
+        position: absolute
+        top: 47%
+        right: calc(100% + 10px)
+        display: flex
+        gap: 12px
+        transform: translateY(-50%)
+        visibility: hidden
+        opacity: 0
+        transition: all .2s
+    .action
+        font-size: 0
+        svg
+            fill: rgba($n2, .56)
+            transition: fill .2s
+        &:hover
+            svg
+                fill: rgba($n2, .76)

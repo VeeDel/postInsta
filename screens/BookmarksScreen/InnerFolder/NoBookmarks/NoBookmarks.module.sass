@@ -1,0 +1,36 @@
+@import @/styles/variables
+
+.noBookmarks
+    position: relative
+    height: calc(100svh - 68px)
+    overflow: hidden
+
+.preview
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 524px
+    transform: translate(-50%, calc(-50% - 32px))
+    +m
+        transform: translate(-50%, calc(-50% - 64px))
+    img
+        opacity: 1
+
+.details
+    position: absolute
+    left: 12px
+    right: 12px
+    bottom: 24px
+    text-align: center
+    +m
+        bottom: 96px
+
+.title
+    margin-bottom: 12px
+    +title
+    color: rgba($n2, .76)
+
+.text
+    text-align: center
+    +base-2r
+    color: rgba($n2, .35)

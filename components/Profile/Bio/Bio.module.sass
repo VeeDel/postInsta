@@ -1,0 +1,67 @@
+@import @/styles/variables
+
+.head
+    display: flex
+
+.details
+    margin-right: auto
+
+.name
+    +title
+    color: rgba($n2, .76)
+
+.login
+    +base-2r
+    color: rgba($n2, .4)
+
+.controls
+    display: flex
+    align-items: center
+    flex-shrink: 0
+    gap: 8px
+    margin-bottom: 20px
+
+.edit
+    svg
+        display: none
+    +m
+        width: 44px
+        padding: 0
+        gap: 0
+        span
+            display: none
+        svg
+            display: inline-block
+
+.description
+    margin-bottom: 20px
+    +body-2r
+    color: $text-tertiary
+    span
+        color: $text-secondary
+
+.stats
+    display: flex
+    flex-wrap: wrap
+    gap: 12px 24px
+
+.item,
+.link
+    display: flex
+    align-items: center
+    gap: 8px
+    color: rgba($n2, .76)
+    svg
+        fill: rgba($n2, .56)
+    span
+        color: $text-tertiary
+        transition: color .2s
+    &:hover
+        span
+            color: $text-secondary
+
+.link
+    text-decoration: underline
+    transition: text-decoration .2s
+    &:hover
+        text-decoration-color: transparent

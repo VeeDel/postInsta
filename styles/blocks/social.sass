@@ -1,0 +1,31 @@
+[class^="social"]
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-shrink: 0
+    gap: 8px
+    height: 40px
+    padding: 0 12px
+    border-radius: 20px
+    +caption-sm
+    color: rgba($n2, .56)
+    transition: all .2s
+    +m
+        height: 36px
+        padding: 0 9px
+    svg
+        fill: rgba($n2, .4)
+        transition: all .2s
+    &:hover
+        background: rgba($n2, .05)
+        color: rgba($n2, .76)
+        svg
+            fill: rgba($n2, .76)
+
+.social-circle
+    width: 40px
+    padding: 0
+    border-radius: 50%
+    &:hover
+        background: rgba($n2, .1)
+    

@@ -1,0 +1,67 @@
+@import @/styles/variables
+
+.sorting
+    display: flex
+    align-items: center
+    margin-top: 12px
+    padding: 4px 8px
+
+.arrow
+    flex-shrink: 0
+    background: rgba($n3, .5)
+    border-radius: 50%
+    font-size: 0
+    transition: background .2s
+    svg
+        fill: rgba($n2, .8)
+        transition: fill .2s
+    &:hover
+        background: rgba($n3, .8)
+        svg
+            fill: $n2
+
+.tags
+    display: flex
+    flex-grow: 1
+    gap: 4px
+    margin: 0 8px
+    overflow: auto
+    scrollbar-width: none
+    &::-webkit-scrollbar
+        display: none
+    &.mask
+        mask-image: linear-gradient(to left, black 90%, transparent 100%), linear-gradient(to right, black 90%, transparent 100%)
+        mask-composite: intersect
+    &.maskLeft
+        mask-image: linear-gradient(to left, black 90%, transparent 100%)
+    &.maskRight
+        mask-image: linear-gradient(to right, black 90%, transparent 100%)
+
+.tag
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 36px
+    padding: 0 16px
+    border-radius: 12px
+    +base-2m
+    color: rgba($n2, .56)
+    transition: all .2s
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 12px
+        pointer-events: none
+        border: 1px solid rgba(255, 255, 255, 0.1)
+        mask-image: linear-gradient(175deg, black, transparent 40%)
+        opacity: 0
+        transition: opacity .2s
+    &:hover,
+    &.active
+        color: $text-primary
+    &.active
+        background: rgba($n1, .05)
+        &:after
+            opacity: 1

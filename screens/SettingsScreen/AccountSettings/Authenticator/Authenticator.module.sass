@@ -1,0 +1,55 @@
+@import @/styles/variables
+
+.title
+    +title
+    color: rgba($n2, .76)
+
+.list
+    margin-top: 32px
+
+.item
+    position: relative
+    display: flex
+    align-items: center
+    padding: 12px
+    border-radius: 20px
+    background: rgba($n2, .02)
+    cursor: pointer
+    transition: background .2s
+    svg
+        flex-shrink: 0
+        margin-left: 12px
+        +m
+            display: none
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 20px
+        pointer-events: none
+        border: 1px solid rgba(255, 255, 255, 0.05)
+        mask-image: linear-gradient(175deg, black, transparent 50%)
+    &:hover
+        background: rgba($n2, .05)
+    &:not(:last-child)
+        margin-bottom: 12px
+
+.icon
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-shrink: 0
+    width: 44px
+    height: 44px
+    margin-right: 16px
+    border-radius: 50%
+    background: rgba($n2, .05)
+
+.subtitle
+    margin-bottom: 4px
+    +base-2m
+    color: rgba($n2, .76)
+
+.description
+    +base-2r
+    color: rgba($n2, .4)

@@ -1,0 +1,84 @@
+@import @/styles/variables
+
+.label
+    margin-bottom: 12px
+    +base-2r
+    color: rgba($n2, .76)
+
+.wrap
+    position: relative
+    &.visible
+        .button
+            svg
+                transform: rotate(180deg)
+        .options
+            visibility: visible
+            opacity: 1
+
+.button
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    height: 44px
+    padding: 0 12px 0 19.5px
+    background: rgba($n2, .05)
+    border-radius: 22px
+    background: rgba(248, 248, 248, 0.05)
+    box-shadow: 2px 4px 16px 0px rgba(248, 248, 248, 0.06) inset
+    backdrop-filter: blur(50px)
+    text-align: left
+    +base-2m
+    color: rgba($n2, .76)
+    svg
+        flex-shrink: 0
+        margin-left: 12px
+        fill: rgba($n2, .76)
+        transition: transform .2s
+
+.options
+    position: absolute
+    top: calc(100% + 8px)
+    left: 0
+    right: 0
+    z-index: 2
+    padding: 8px
+    border-radius: 20px
+    background: rgba(248, 248, 248, 0.05)
+    box-shadow: 2px 4px 16px 0px rgba(248, 248, 248, 0.06) inset, 0px 24px 24px -16px rgba(5, 5, 5, 0.09), 0px 6px 13px 0px rgba(5, 5, 5, 0.10), 0px 6px 4px -4px rgba(5, 5, 5, 0.10), 0px 5px 1.5px -4px rgba(5, 5, 5, 0.25)
+    backdrop-filter: blur(50px)
+    visibility: hidden
+    opacity: 0
+    transition: all .2s
+
+.option
+    position: relative
+    display: block
+    width: 100%
+    padding: 12px 36px 12px 11.5px
+    border-radius: 12px
+    overflow: hidden
+    text-align: left
+    +base-2m
+    color: rgba($n2, .56)
+    transition: all .2s
+    &:after
+        content: ''
+        position: absolute
+        top: 18px
+        right: 12px
+        width: 8px
+        height: 8px
+        border-radius: 50%
+        background: $text-secondary
+        opacity: 0
+        transition: opacity .2s
+    &:hover,
+    &.active
+        color: $text-primary
+    &.active
+        background: rgba(248, 248, 248, 0.10)
+        box-shadow: 0px 24px 32px -12px rgba(18, 18, 18, 0.10), 2px 4px 16px 0px rgba(248, 248, 248, 0.06) inset
+        &:after
+            opacity: 1
+    

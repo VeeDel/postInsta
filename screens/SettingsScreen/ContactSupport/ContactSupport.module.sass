@@ -1,0 +1,44 @@
+@import @/styles/variables
+
+.title
+    margin-bottom: 12px
+    +title
+    color: rgba($n2, .76)
+
+.description
+    margin-bottom: 32px
+    +base-2r
+    color: rgba($n2, .4)
+    a
+        text-decoration: underline
+        color: rgba($n2, .76)
+        transition: text-decoration .2s
+        &:hover
+            text-decoration-color: transparent
+
+.field,
+.select
+    margin-bottom: 16px
+
+.button
+    width: 100%
+
+.thanks
+    padding: 40px 0
+    text-align: center
+
+.text
+    margin-bottom: 50px
+    +base-2r
+    color: rgba($n2, .35)
+
+.preview
+    position: relative
+    height: 240px
+
+.image
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 482px
+    transform: translate(-50%, -50%)

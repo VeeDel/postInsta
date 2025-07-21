@@ -1,0 +1,43 @@
+.rti
+    .rti--container
+        padding: 0
+        background: transparent
+        border: none !important
+        box-shadow: none !important
+        border-radius: 0
+        min-height: 32px
+        gap: 6px
+        font-size: 0
+    .rti--input
+        background: transparent
+        border: none
+        border-radius: 0
+        padding: 0
+        +base-2r
+        color: rgba($n2, .4)
+        &::placeholder
+            color: rgba($n2, .4)
+    .rti--tag
+        position: relative
+        height: 32px
+        gap: 8px
+        padding: 0 12px
+        border-radius: 8px
+        background: rgba(248, 248, 248, 0.05)
+        +caption-sm
+        color: $text-primary
+        &:after
+            content: ""
+            position: absolute
+            inset: 0
+            border-radius: 8px
+            pointer-events: none
+            border: 1px solid rgba(255, 255, 255, 0.1)
+            mask-image: linear-gradient(178deg, black, transparent 60%)
+        button
+            padding: 0
+            line-height: 1
+            color: rgba($n2, .25)
+            transition: color .2s
+            &:hover
+                color: rgba($n2, .56)

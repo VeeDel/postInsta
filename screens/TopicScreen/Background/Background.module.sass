@@ -1,0 +1,27 @@
+@import @/styles/variables
+
+.background
+    position: relative
+    height: 240px
+    & > img
+        object-fit: cover
+        opacity: 1
+    .actions
+        position: absolute
+        top: 12px
+        right: 12px
+        .actionsHead
+            &:hover
+                background: rgba($n3, .7)
+        .actionsBody
+            right: -8px
+
+.back
+    position: absolute
+    top: 12px
+    left: 12px
+    z-index: 1
+    &:hover
+        background: rgba($n3, .7)
+
+    

@@ -1,0 +1,22 @@
+@import @/styles/variables
+
+.noMessages
+    position: relative
+    flex-grow: 1
+    overflow: hidden
+
+.preview
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 488px
+    transform: translate(-50%, calc(-50% - 24px))
+
+.text
+    position: absolute
+    top: calc(50% + 92px)
+    left: 50%
+    transform: translateX(-50%)
+    text-align: center
+    +base-r
+    color: rgba($n2, .4)

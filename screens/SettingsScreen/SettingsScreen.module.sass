@@ -1,0 +1,56 @@
+@import @/styles/variables
+
+div.sidebarLeft
+    background: rgba($n3, .9)
+
+.row
+    .rowContainer
+        +m
+            display: none
+    &.visible
+        +m
+            .rowSidebar
+                display: none
+            .rowContainer
+                display: block
+
+.head
+    display: flex
+    align-items: center
+    padding: 12px
+
+.back
+    margin-right: 8px
+
+.search
+    flex-grow: 1
+
+.body
+    height: calc(100svh - 68px)
+    padding: 0 12px 12px
+
+.rowContainer
+    .head
+        align-items: center
+        .back
+            display: none
+            +m
+                display: inline-flex
+
+.title
+    margin-right: auto
+    padding-left: 16px
+    +title
+    color: $text-secondary
+    +m
+        padding-left: 0
+
+.buttons
+    display: flex
+    gap: 8px
+
+.containerModal
+    max-width: 482px
+    .innerModal
+        +m
+            padding: 32px 16px

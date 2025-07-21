@@ -1,0 +1,32 @@
+@import @/styles/variables
+
+.head
+    padding: 12px
+
+.top
+    display: flex
+    align-items: center
+    gap: 8px
+
+.tabs
+    flex-shrink: 0
+    width: 292px
+    +d
+        width: 260px
+    +m
+        display: none
+
+.search
+    flex-grow: 1
+
+.body
+    height: calc(100svh - 124px)
+    padding: 0 12px 12px
+
+.list
+    display: flex
+    flex-wrap: wrap
+    margin: -8px -4px 0
+    +m
+        display: block
+        margin: -8px 0 0

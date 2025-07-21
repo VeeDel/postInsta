@@ -1,0 +1,80 @@
+@import @/styles/variables
+
+.head
+    display: flex
+    align-items: flex-start
+    .button
+        flex-shrink: 0
+        margin-left: 8px
+
+.search
+    display: flex
+    align-items: flex-start
+    flex-grow: 1
+    padding: 6px 12px
+    background: rgba($n4, .25)
+    border-radius: 24px
+
+.result
+    flex-shrink: 0
+    margin: 4px 12px 0 0
+    font-size: 0
+
+.tags
+    flex-grow: 1
+
+.body
+    max-height: 372px
+    margin-top: 12px
+
+.list
+    margin-top: -8px
+
+.item
+    position: relative
+    display: flex
+    align-items: center
+    margin-top: 8px
+    padding: 12px
+    border-radius: 20px
+    background: rgba($n2, .02)
+    cursor: pointer
+    transition: background .2s
+    &:before,
+    &:after
+        content: ""
+        position: absolute
+        opacity: 0
+        transition: opacity .2s
+    &:before
+        inset: 0
+        border-radius: 20px
+        pointer-events: none
+        border: 1px solid rgba(255, 255, 255, 0.1)
+        mask-image: linear-gradient(178deg, black, transparent 60%)
+    &:after
+        top: 12px
+        right: 12px
+        width: 24px
+        height: 24px
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='12' fill='%23fff' fill-opacity='.05'/%3E%3Cpath d='M8 13.313l2.703 2.188L16 8.5' stroke='%23f8f8f8' stroke-opacity='.8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat 50% 50% / 100% auto
+    &:hover
+        background: rgba($n2, .05)
+    &.checked
+        background: rgba($n2, .1)
+        &:before,
+        &:after
+            opacity: 1
+        
+
+.details
+    flex-grow: 1
+    padding-left: 16px
+
+.name
+    +base-2m
+
+.login
+    margin-top: 2px
+    +caption-r
+    color: rgba($n2, .4)

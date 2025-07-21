@@ -1,0 +1,47 @@
+@import @/styles/variables
+
+.field
+    position: relative
+    &:not(:first-child)
+        margin-top: 14px
+
+.reset
+    position: absolute
+    top: 8px
+    right: 8px
+    svg
+        width: 12px
+        height: 12px
+        fill: rgba($n2, .25)
+        transition: fill .2s
+    &:hover
+        svg
+            fill: rgba($n2, .56)
+
+.btns
+    display: flex
+    flex-direction: column
+    gap: 12px
+    margin-top: 24px
+    .button
+        width: 100%
+        gap: 12px
+        img
+            opacity: 1
+
+.foot
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 8px
+    margin-top: 12px
+    text-align: center
+    +caption-r
+    color: rgba($n2, .56)
+
+.link
+    +caption-sm
+    color: rgba($n2, .56)
+    transition: color .2s
+    &:hover
+        color: $text-secondary

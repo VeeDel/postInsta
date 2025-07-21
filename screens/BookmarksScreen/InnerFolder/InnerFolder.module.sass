@@ -1,0 +1,55 @@
+@import @/styles/variables
+
+.head
+    display: flex
+    padding: 12px
+    gap: 8px
+
+.tabs
+    flex-shrink: 0
+    width: 378px
+    +w
+        width: 320px
+    +d
+        width: 280px
+    +t
+        width: auto
+        flex-grow: 1
+
+.back
+    display: none
+    +m
+        display: inline-flex
+
+.search
+    flex-grow: 1
+    +t
+        display: none
+
+.actions
+    margin-left: auto
+
+.body
+    height: calc(100svh - 68px)
+    padding: 0 12px 12px
+
+.posts
+    margin-top: -8px
+
+.images
+    display: flex
+    flex-wrap: wrap
+    margin: -8px -4px 0
+
+.image
+    width: calc(25% - 8px)
+    margin: 8px 4px 0
+    +r(1179)
+        width: calc(33.333% - 8px)
+    +t
+        width: calc(50% - 8px)
+    img
+        width: 100%
+        height: auto
+        object-fit: cover
+        border-radius: 24px

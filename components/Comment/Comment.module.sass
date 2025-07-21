@@ -1,0 +1,40 @@
+@import @/styles/variables
+
+.modal
+    .containerModal
+        max-width: 640px
+    .innerModal
+        padding: 12px
+
+.head
+    display: flex
+    align-items: center
+    margin-bottom: 12px
+    .button
+        margin-right: 12px
+
+.title
+    +title
+    color: $text-secondary
+
+.post
+    &:after
+        content: ""
+        position: absolute
+        top: 64px
+        left: 33.5px
+        bottom: -12px
+        width: 1.5px
+        background: rgba($n2, .1)
+
+.newPost
+    margin-top: 12px
+    .addMedia
+        +m
+            position: static
+    .bodyAddMedia
+        +m
+            top: auto
+            left: 0
+            bottom: 64px
+            width: calc(100vw - 48px)

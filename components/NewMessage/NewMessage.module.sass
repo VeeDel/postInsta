@@ -1,0 +1,121 @@
+@import @/styles/variables
+
+.newMessage
+    padding: 12px
+
+.form
+    position: relative
+    display: flex
+    align-items: flex-start
+    padding: 8px 8px 8px 12px
+    background: rgba($n4, .3)
+    border-radius: 32px
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 32px
+        pointer-events: none
+        border: 1px solid rgba(255, 255, 255, 0.05)
+        mask-image: linear-gradient(178deg, black, transparent 60%)
+    &.recording
+        padding-left: 8px
+
+.load,
+.button
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-shrink: 0
+    width: 44px
+    height: 44px
+    svg
+        fill: rgba($n2, .35)
+        transition: fill .2s
+    &:hover
+        svg
+            fill: $text-secondary
+
+.load
+    position: relative
+    input
+        position: absolute
+        inset: 0
+        opacity: 0
+        cursor: pointer
+
+.field
+    display: flex
+    align-items: center
+    flex-grow: 1
+    min-height: 44px
+    padding: 0 16px
+
+.input
+    width: 100%
+    height: 20px
+    padding: 0
+    background: transparent
+    box-shadow: none
+    border: none
+    border-radius: 0
+    resize: none
+    background: transparent
+    +base-2r
+    color: rgba($n2, .76)
+    -webkit-overflow-scrolling: touch
+    outline: none
+    &::placeholder
+        color: rgba($n2, .25)
+
+.controls
+    display: flex
+    flex-shrink: 0
+    gap: 4px
+
+.addMedia
+    position: static
+    .headAddMedia
+        background: transparent !important
+        &:before
+            display: none
+        &:hover
+            svg
+                fill: $text-secondary
+    .bodyAddMedia
+        top: auto
+        left: auto
+        right: 0
+        bottom: calc(100% + 12px)
+        +m
+            width: calc(100vw - 24px)
+
+.waveform
+    position: relative
+    flex-grow: 1
+    height: 24px
+    margin-left: 16px
+    align-self: center
+    overflow: hidden
+
+.image
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 452px
+    transform: translate(-50%, -50%)
+    img
+        opacity: 1
+
+.time
+    align-self: center
+    min-width: 34px
+    margin: 0 12px
+    text-align: center
+    +caption-r
+    color: rgba($n2, .56)
+
+.button
+    svg
+        fill: $text-secondary
+

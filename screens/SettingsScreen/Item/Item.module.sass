@@ -1,0 +1,60 @@
+@import @/styles/variables
+
+.item
+    position: relative
+    border-top: 1px solid rgba($n2, .02)
+    transition: background .2s
+    &.itemButton
+        cursor: pointer
+    &:hover,
+    &.active
+        background: rgba($n1, .01)
+
+.head
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-wrap: wrap
+    gap: 16px
+    padding: 16px
+
+.label
+    display: flex
+    align-items: center
+    flex-shrink: 0
+    color: rgba($n2, .56)
+    svg
+        margin-right: 12px
+        fill: $text-secondary
+
+.dropdownHead
+    display: flex
+    align-items: center
+    +base-2r
+    color: rgba($n2, .4)
+    transition: color .2s
+    svg
+        margin-left: 4px
+        fill: rgba($n2, .4)
+        transition: fill .2s
+    &:hover,
+    &.active
+        color: rgba($n2, .76)
+        svg
+            fill: rgba($n2, .56)
+
+.dropdownBody
+    position: absolute
+    right: 0
+    bottom: calc(100% + 8px)
+    z-index: 3
+    width: 320px
+    background: #3b3b3b
+    box-shadow: 0px 24px 32px -12px rgba(18, 18, 18, 0.10), 2px 4px 16px 0px rgba(248, 248, 248, 0.06) inset
+    border-radius: 20px
+    visibility: hidden
+    opacity: 0
+    transition: visibility .2s, opacity .2s
+    &.visible
+        visibility: visible
+        opacity: 1

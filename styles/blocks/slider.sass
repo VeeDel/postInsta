@@ -1,0 +1,40 @@
+.rc-slider
+    &.slider-text-size
+        height: 12px
+        border-radius: 2px
+        .rc-slider-rail
+            height: 2px
+            border-radius: 2px
+            background-color: rgba($n2, .05)
+        .rc-slider-track, .rc-slider-tracks
+            height: 2px
+            border-radius: 2px
+            background-color: rgba($n2, .5)
+        .rc-slider-step
+            height: 2px
+        .rc-slider-handle
+            width: 16px
+            height: 16px
+            margin-top: -7px
+            border: none
+            box-shadow: none !important
+            background: linear-gradient(180deg, rgba(248, 248, 248, 0.90) 0%, rgba(248, 248, 248, 0.30) 100%)
+            backdrop-filter: blur(2px)
+            opacity: 1
+    &.slider-brightness
+        height: 32px
+        padding: 0
+        border-radius: 12px
+        overflow: hidden
+        .rc-slider-rail
+            height: 32px
+            border-radius: 12px
+            background-color: rgba($n2, .05)
+        .rc-slider-track, .rc-slider-tracks
+            height: 32px
+            border-radius: 0
+            background-color: rgba($n2, .1)
+        .rc-slider-step
+            height: 32px
+        .rc-slider-handle
+            display: none

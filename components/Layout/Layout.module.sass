@@ -1,0 +1,52 @@
+@import @/styles/variables
+
+.layout
+    position: relative
+    width: 100%
+    // max-width: 1600px
+    height: 100svh
+    // margin: 0 auto
+    padding-left: 320px
+    // border-radius: 32px
+    +xl
+        padding-left: 280px
+    +d
+        padding-left: 72px
+    +m
+        padding-left: 0
+    &:before,
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        // border-radius: 32px
+        pointer-events: none
+    &:before
+        z-index: 10
+        box-shadow: inset 2px 4px 16px 0px rgba(248, 248, 248, 0.06), 0px 54px 32px -16px rgba(5, 5, 5, 0.05), 0px 24px 24px -16px rgba(5, 5, 5, 0.09), 0px 6px 12px 0px rgba(5, 5, 5, 0.10), 0px 4px 4px -4px rgba(5, 5, 5, 0.10), 0px 0.5px 1.5px -4px rgba(5, 5, 5, 0.50)
+    &:after
+        z-index: 11
+        border: 1px solid rgba(255, 255, 255, 0.05)
+        mask-image: linear-gradient(172deg, black, transparent 50%)
+    &.active
+        padding-left: 72px
+        +m
+            padding-left: 0
+
+.row
+    display: flex
+    +t
+        display: block
+    &.reverse
+        flex-direction: row-reverse
+
+.container
+    width: calc(100% - 480px)
+    height: 100svh
+    background: rgba($n3, .7)
+    +xl
+        width: calc(100% - 400px)
+    +w
+        width: calc(100% - 340px)
+    +t
+        width: 100%

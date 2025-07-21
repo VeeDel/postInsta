@@ -1,0 +1,32 @@
+@import @/styles/variables
+
+.messanger
+    display: flex
+    flex-direction: column
+    height: 100svh
+    .actions
+        .actionsBody
+            width: 256px
+
+.head
+    display: flex
+    align-items: center
+    padding: 12px 12px 12px 24px
+
+.close
+    display: none
+    +m
+        display: inline-flex
+        margin-left: 8px
+
+.profile
+    display: flex
+    align-items: center
+    margin-right: auto
+    gap: 16px
+    +base-2m
+
+.body
+    flex-grow: 1
+    padding: 0 12px
+

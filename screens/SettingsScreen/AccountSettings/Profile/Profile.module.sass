@@ -1,0 +1,90 @@
+@import @/styles/variables
+
+.profile
+    position: relative
+    padding: 54px 16px 58px
+    border-radius: 20px
+    background: rgba($n2, 0.02)
+    overflow: hidden
+    text-align: center
+    &:before,
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 20px
+        pointer-events: none
+    &:before
+        border: 1.5px solid rgba(255, 255, 255, 0.01)
+    &:after
+        border: 1.5px solid rgba(255, 255, 255, 0.05)
+        mask-image: linear-gradient(175deg, black, transparent 50%)
+
+.photo
+    position: relative
+    width: 72px
+    height: 72px
+    margin: 0 auto 24px
+    padding: 4px
+    border-radius: 50%
+    background: rgba(248, 248, 248, 0.01)
+    box-shadow: 0px 0px 8px 0px rgba(248, 248, 248, 0.25) inset
+
+.avatar
+    position: relative
+    z-index: 1
+    width: 64px
+    height: 64px
+    img
+        width: 100%
+        height: 100%
+        border-radius: 50%
+        opacity: 1
+        object-fit: cover
+
+.circles
+    span
+        display: block
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        aspect-ratio: 1
+        border-width: 1.5px
+        border-style: solid
+        border-color: rgba($n2, 0.01)
+        border-radius: 50%
+        &:nth-child(1)
+            width: 116px
+            border-color: rgba($n2, 0.02)
+        &:nth-child(2)
+            width: 160px
+        &:nth-child(3)
+            width: 200px
+
+.dots
+    position: absolute
+    z-index: 2
+    &:nth-child(1)
+        left: -37px
+        bottom: 47px
+        width: 144px
+    &:nth-child(2)
+        top: 23px
+        left: -11px
+        width: 93px
+    img
+        opacity: 1
+
+.name,
+.email
+    position: relative
+    z-index: 3
+
+.name
+    +title
+
+.email
+    margin-top: 8px
+    +caption-r
+    color: rgba($n2, .4)

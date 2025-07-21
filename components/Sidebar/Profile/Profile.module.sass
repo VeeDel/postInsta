@@ -1,0 +1,143 @@
+@import @/styles/variables
+
+.profile
+    position: relative
+    +m
+        display: flex
+    &.active
+        .body
+            visibility: visible
+            opacity: 1
+    &.activeSidebar
+        .head
+            justify-content: center
+        .details,
+        .dots
+            display: none
+        .details
+            +d
+                display: block
+        .dots
+            +d
+                display: flex
+            +m
+                display: none
+        .body
+            right: 0
+            +d
+                right: -2px
+
+.head
+    display: flex
+    align-items: center
+    height: 48px
+    padding: 0 6px
+    border-radius: 12px
+    cursor: pointer
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    transition: all .2s
+    +d
+        justify-content: center
+    &:hover
+        background: rgba($n1, .05)
+        +m
+            background: transparent
+
+.avatar
+    width: 32px
+    height: 32px
+    &:before
+        width: 8px !important
+
+.details
+    flex-grow: 1
+    padding-left: 12px
+    +d
+        display: none
+    +m
+        display: block
+
+.name
+    +base-2sm
+    color: rgba($n2, .56)
+
+.login
+    +caption-r
+    color: rgba($n2, .22)
+
+.dots
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-shrink: 0
+    width: 32px
+    height: 32px
+    +d
+        display: none
+
+.body
+    position: absolute
+    right: -2px
+    bottom: calc(100% + 4px)
+    width: 48px
+    border-radius: 32px
+    background: rgba(248, 248, 248, 0.05)
+    box-shadow: 0px 24px 32px -12px rgba(18, 18, 18, 0.10), inset 2px 4px 16px 0px rgba(248, 248, 248, 0.06)
+    backdrop-filter: blur(16px)
+    visibility: hidden
+    opacity: 0
+    transition: all .2s
+    +d
+        right: 0
+    +m
+        position: static
+        width: auto
+        margin-left: auto
+        border-radius: 0
+        background: transparent
+        box-shadow: none
+        backdrop-filter: none
+        visibility: visible
+        opacity: 1
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 32px
+        pointer-events: none
+        border: 1px solid rgba(255, 255, 255, 0.1)
+        mask-image: linear-gradient(165deg, black, transparent 60%)
+        pointer-events: none
+        +m
+            display: none
+
+.items
+    display: flex
+    flex-direction: column
+    +m
+        flex-direction: row
+        gap: 8px
+
+.item
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 48px
+    transition: background .2s
+    +m
+        width: 44px
+        height: 44px
+    svg
+        fill: rgba($n2, .56)
+    &:first-child
+        border-radius: 32px 32px 0 0
+        +m
+            border-radius: 0
+    &:last-child
+        border-radius: 0 0 32px 32px
+        +m
+            border-radius: 0
+    &:hover
+        background: rgba($n1, .05)
+        +m
+            background: transparent

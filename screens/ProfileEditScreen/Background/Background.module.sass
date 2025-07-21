@@ -1,0 +1,56 @@
+@import @/styles/variables
+
+.background
+    position: relative
+    flex-shrink: 0
+    height: 180px
+    & > img
+        object-fit: cover
+        opacity: 1
+
+.avatar
+    position: absolute
+    left: 20px
+    bottom: -36px
+    z-index: 1
+    border: 4px solid #303030
+    border-radius: 50%
+    overflow: hidden
+    img
+        border-radius: 50%
+        opacity: 1
+    svg
+        position: absolute
+        top: 50%
+        left: 50%
+        z-index: 2
+        transform: translate(-50%, -50%)
+        fill: $text-secondary
+    input
+        position: absolute
+        inset: 0
+        z-index: 3
+        opacity: 0
+    &:after
+        content: ''
+        position: absolute
+        inset: 0
+        background: rgba($n4, .6)
+
+.back
+    position: absolute
+    top: 12px
+    left: 12px
+    z-index: 1
+
+.buttons
+    position: absolute
+    top: 12px
+    right: 12px
+    display: flex
+    gap: 8px
+
+.back,
+.button
+    &:hover
+        background: rgba($n3, .7)

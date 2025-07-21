@@ -1,0 +1,86 @@
+@import @/styles/variables
+
+.topic
+    display: block
+    width: calc(50% - 8px)
+    margin: 8px 4px 0
+    padding: 8px
+    border-radius: 20px
+    background: rgba($n2, .02)
+    transition: background .2s
+    +m
+        width: 100%
+        margin: 8px 0 0
+    &:hover
+        background: rgba($n2, .1)
+
+.preview
+    position: relative
+    height: 212px
+    img
+        width: 100%
+        height: auto
+        border-radius: 12px
+        object-fit: cover
+
+.body
+    padding: 20px 12px
+
+.title
+    margin-bottom: 12px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    +base-2m
+    color: rgba($n2, .76)
+
+.content
+    display: -webkit-box
+    margin-bottom: 12px
+    -webkit-line-clamp: 2
+    -webkit-box-orient: vertical
+    overflow: hidden
+    +caption-r
+    color: rgba($n2, .56)
+
+.line
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 12px
+
+.avatars
+    display: flex
+    margin: -1px 0
+
+.avatar
+    flex-shrink: 0
+    width: 20px
+    height: 20px
+    border: 1px solid #333333
+    border-radius: 50%
+    overflow: hidden
+    img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        opacity: 1
+    &:not(:first-child)
+        margin-left: -8px
+    
+.time
+    +small
+    color: rgba($n2, .35)
+
+.category
+    display: flex
+    align-items: center
+    gap: 8px
+    +small-sm
+    color: rgba($n2, .76)
+
+.color
+    flex-shrink: 0
+    width: 8px
+    height: 8px
+    border-radius: 50%

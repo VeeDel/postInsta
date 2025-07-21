@@ -1,0 +1,29 @@
+@import @/styles/variables
+    
+.notify
+    display: flex
+    align-items: center
+    padding: 10px 16px 10px 8px
+    border-radius: 16px
+    background: rgba($n2, .1)
+    backdrop-filter: blur(32px)
+
+.icon
+    flex-shrink: 0
+    margin-right: 8px
+    img
+        opacity: 1
+
+.close
+    position: absolute
+    top: -12px
+    right: -12px
+    z-index: 1
+    background: rgba($n3, .8)
+    border-radius: 50%
+    font-size: 0
+    transition: background .2s
+    svg
+        fill: rgba($n2, .8)
+    &:hover
+        background: $n3

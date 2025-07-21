@@ -1,0 +1,207 @@
+@import @/styles/variables
+
+.message
+    position: relative
+    display: flex
+    margin-top: 8px
+    padding: 12px
+    border-radius: 20px
+    background: rgba($n2, .02)
+    transition: background 0.2s
+    &:hover
+        background: rgba($n2, .07)
+        .actions
+            visibility: visible
+            opacity: 1
+    &.messageReply
+        padding-top: 44px
+    &:nth-child(1)
+        .actions
+            top: 0
+
+.avatar
+    flex-shrink: 0
+    width: 44px
+    height: 44px
+    border-radius: 50%
+    overflow: hidden
+    img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        opacity: 1
+
+.details
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    width: calc(100% - 44px)
+    padding-left: 16px
+
+.head
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-end
+    padding-right: 48px
+
+.name
+    margin-right: 12px
+    +base-2m
+    color: rgba($n2, .76)
+
+.date
+    position: relative
+    top: -1px
+    +caption-r
+    color: rgba($n2, .22)
+
+.content,
+.form
+    margin-top: 4px
+
+.content
+    +body-2r
+    color: rgba($n2, .56)
+
+.form
+    display: flex
+    align-items: flex-end
+    width: 100%
+    padding: 8px 8px 8px 16px
+    border-radius: 12px
+    background: rgba($n3, .7)
+    .input
+        flex-grow: 1
+        height: 24px
+        padding: 0
+        background: transparent
+        box-shadow: none
+        border: none
+        border-radius: 0
+        resize: none
+        background: transparent
+        +body-2r
+        color: rgba($n2, .56)
+        -webkit-overflow-scrolling: touch
+        outline: none
+
+.save
+    flex-shrink: 0
+    margin-left: 16px
+    font-size: 0
+    svg
+        fill: rgba($n2, .35)
+        transition: fill .2s
+    &:hover
+        svg
+            fill: rgba($n2, .76)
+
+.image,
+.video,
+.reaction
+    margin-top: 16px
+
+.image,
+.video
+    max-width: 880px
+    width: 100%
+    img,
+    video
+        width: 100%
+        border-radius: 32px
+        +m
+            border-radius: 24px
+
+.image
+    img
+        height: auto
+        opacity: 1
+        +m
+            min-height: 200px
+            object-fit: cover
+
+.reaction
+    display: inline-flex
+    align-items: center
+    height: 32px
+    margin-top: 16px
+    padding: 0 10.5px 0 6.5px
+    gap: 6px
+    border: 1.5px solid rgba($n2, .05)
+    border-radius: 16px
+    +caption-sm
+    color: rgba($n2, .35)
+    svg
+        width: 16px
+        height: 16px
+        margin-right: 2px
+        fill: rgba(#FF4D00, .9)
+
+.actions
+    position: absolute
+    top: -16px
+    right: 12px
+    z-index: 3
+    display: flex
+    gap: 4px
+    padding: 4px
+    border-radius: 10px
+    box-shadow: 0px 24px 32px -12px rgba(18, 18, 18, 0.10), 2px 4px 16px 0px rgba(248, 248, 248, 0.06) inset
+    background: #323131
+    backdrop-filter: blur(16px)
+    visibility: hidden
+    opacity: 0
+    transition: visibility .2s, opacity .2s
+
+.action
+    width: 24px
+    height: 24px
+    border-radius: 6px
+    font-size: 0
+    transition: background .2s
+    svg
+        width: 16px
+        height: 16px
+        fill: rgba($n2, .56)
+        transition: fill .2s
+    &:hover
+        background: rgba($n2, .07)
+        svg
+            fill: rgba($n2, .76)
+    &.disabled
+        pointer-events: none
+
+.reply
+    position: absolute
+    top: 12px
+    left: 12px
+    right: 12px
+    display: flex
+    align-items: center
+    padding-left: 60px
+    .avatar
+        width: 20px
+        height: 20px
+        margin-right: 8px
+    &:before
+        content: ''
+        position: absolute
+        top: 9px
+        left: 20px
+        width: 36px
+        height: 20px
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='20' fill='none' viewBox='0 0 36 20'%3E%3Cpath d='M1 19V9a8 8 0 0 1 8-8h26' stroke='%23f8f8f8' stroke-opacity='.1' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat 0 0 / 100% auto
+
+.contentReply
+    flex-grow: 1
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
+    +caption-r
+    color: rgba($n2, .25)
+
+.nameReply
+    margin-right: 8px
+    flex-shrink: 0
+    +caption-sm
+    color: rgba($n2, .56)

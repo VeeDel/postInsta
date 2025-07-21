@@ -1,0 +1,23 @@
+@import @/styles/variables
+
+.title
+    margin-bottom: 12px
+    +title
+    color: rgba($n2, .76)
+
+.text
+    margin-bottom: 32px
+    +base-2r
+    color: rgba($n2, .4)
+    span
+        color: rgba($n2, .76)
+    button
+        text-decoration: underline
+        color: rgba($n2, .76)
+        transition: text-decoration .2s
+        &:hover
+            text-decoration-color: transparent
+
+.button
+    width: 100%
+    margin-top: 14px

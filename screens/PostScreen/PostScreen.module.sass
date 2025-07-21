@@ -1,0 +1,73 @@
+@import @/styles/variables
+
+.main
+    position: relative
+    padding-top: 68px
+    &.mainMaxView
+        background: rgba($n3, .7)
+
+.head
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    display: flex
+    justify-content: space-between
+    padding: 12px
+
+.buttonView
+    +t
+        display: none
+
+.body
+    display: flex
+    flex-direction: column
+    height: calc(100svh - 68px)
+    padding: 0 12px 12px
+    .new
+        margin-top: 12px
+
+.wrap
+    flex-grow: 1
+
+.list
+    margin-top: -8px
+
+.post
+    background: rgba($n2, .05) !important
+
+.row
+    display: flex
+
+.col
+    display: flex
+    flex-direction: column
+    height: calc(100svh - 68px)
+    &:first-child
+        width: calc(100% - 480px)
+        padding: 0 0 12px 12px
+        +t
+            display: none
+        .post
+            margin-top: 0
+            flex-grow: 1
+    &:nth-child(2)
+        flex-shrink: 0
+        width: 480px
+        padding: 0 12px
+        +t
+            width: 100%
+
+.new
+    background: rgba($n3, .7)
+    .addMedia
+        +m
+            position: static
+    .bodyAddMedia
+        +m
+            left: 0
+            width: calc(100vw - 24px)
+
+.group
+    flex-grow: 1
+    padding-bottom: 12px

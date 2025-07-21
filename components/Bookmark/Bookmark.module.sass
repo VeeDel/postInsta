@@ -1,0 +1,76 @@
+@import @/styles/variables
+
+.bookmark
+    &.active
+        svg
+            &:nth-child(1)
+                opacity: 0
+            &:nth-child(2)
+                opacity: 1
+                transform: translate(-50%, -50%)
+
+.icon
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 24px
+    height: 24px
+    svg
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        transition: opacity .2s
+        &:nth-child(2)
+            z-index: 1
+            opacity: 0
+            fill: rgba($n2, .76)
+
+.head
+    display: flex
+
+.search
+    flex-grow: 1
+    transition: opacity .2s
+    &.hide
+        opacity: 0.1
+        pointer-events: none
+    .inputSearch
+        background: rgba($n4, .25)
+
+.add
+    flex-shrink: 0
+    margin-left: 8px
+    svg
+        transition: transform .2s
+    &.active
+        transform: rotate(45deg)
+
+.innerModal
+    padding: 12px !important
+
+.body
+    max-height: 348px
+    margin-top: 12px
+    &.bodyNewFolder
+        overflow: hidden
+
+.folders
+    margin-top: -8px
+
+.subtitle
+    +base-2sm
+    color: rgba($n2, .56)
+    span
+        color: rgba($n2, .76)
+    a
+        margin-left: 16px
+        color: rgba($n2, .76)
+        text-decoration: underline
+        &:hover
+            text-decoration: none
+
+.newFolder
+    margin-bottom: 16px
+    background: rgba($n4, .25)

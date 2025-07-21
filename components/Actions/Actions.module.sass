@@ -1,0 +1,87 @@
+@import @/styles/variables
+
+.actions
+    position: relative
+    &.onlyText
+        .item
+            height: 40px
+    &.active
+        .headButton
+            svg
+                fill: $text-secondary
+        .body
+            visibility: visible
+            opacity: 1
+
+.head
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    transition: background .2s
+    svg
+        transition: fill .2s
+    &:hover
+        background: rgba($n2, .1)
+        backdrop-filter: blur(16px)
+        svg
+            fill: rgba($n2, .76)
+    &.headButton
+        width: 44px
+        height: 44px
+
+.body
+    position: absolute
+    top: calc(100% + 8px)
+    right: 0
+    z-index: 10
+    width: 240px
+    padding: 8px
+    box-shadow: 0px 24px 32px -12px rgba(18, 18, 18, 0.10), 2px 4px 16px 0px rgba(248, 248, 248, 0.06) inset
+    background: #3b3b3b
+    border-radius: 24px
+    overflow: hidden
+    visibility: hidden
+    opacity: 0
+    transition: visibility .2s, opacity .2s
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 24px
+        pointer-events: none
+        border: 1px solid rgba(255, 255, 255, 0.1)
+        mask-image: linear-gradient(170deg, black, transparent 60%)
+    &.bodyUp
+        top: auto
+        bottom: calc(100% + 8px)
+
+.inner
+    position: relative
+    z-index: 1
+
+.item
+    display: flex
+    align-items: center
+    gap: 8px
+    width: 100%
+    height: 44px
+    padding: 0 8px
+    border-radius: 16px
+    +base-2sm
+    color: rgba($n2, .56)
+    transition: all .2s
+    svg
+        flex-shrink: 0
+        fill: $text-secondary
+    &:hover
+        background: rgba($n2, .1)
+        color: rgba($n2, .76)
+    &.reverse
+        flex-direction: row-reverse
+        justify-content: space-between
+
+.switch
+    margin-left: auto

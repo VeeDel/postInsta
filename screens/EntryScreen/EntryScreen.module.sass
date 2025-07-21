@@ -1,0 +1,248 @@
+@import @/styles/variables
+
+.login
+    position: relative
+    overflow: hidden
+
+.background
+    position: fixed
+    inset: 0
+    background: #202020
+    &:after
+        content: ''
+        position: absolute
+        inset: 0
+        background: radial-gradient(100% 100% at 50% 0%, rgba(248, 248, 248, 0.05) 0%, rgba(248, 248, 248, 0.00) 68.17%)
+    & > img
+        object-fit: cover
+        opacity: 1
+
+.stars
+    position: absolute
+    top: 0
+    left: 50%
+    width: 1132px
+    transform: translateX(-50%)
+    +m
+        top: -196px
+    img
+        opacity: 1
+
+.inner
+    position: relative
+    z-index: 3
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    min-height: 100svh
+    padding: 48px
+    +m
+        padding: 32px
+
+.body
+    position: relative
+    width: 100%
+    max-width: 408px
+    margin: auto 0
+    border-radius: 32px
+    &:before,
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 32px
+        pointer-events: none
+        +m
+            display: none
+    &:before
+        border: 12px solid rgba(248, 248, 248, 0.50)
+        opacity: 0.29
+        background: linear-gradient(158deg, rgba(255, 255, 255, 0.06) 14.19%, rgba(255, 255, 255, 0.00) 50.59%, rgba(255, 255, 255, 0.00) 68.79%, rgba(255, 255, 255, 0.02) 105.18%)
+        filter: blur(20px)
+    &:after
+        background: #363638
+        box-shadow: 2px 4px 16px 0px rgba(248, 248, 248, 0.06) inset, 0px 24px 24px -16px rgba(5, 5, 5, 0.09), 0px 6px 13px 0px rgba(5, 5, 5, 0.10), 0px 6px 4px -4px rgba(5, 5, 5, 0.10), 0px 5px 1.5px -4px rgba(5, 5, 5, 0.25)
+        backdrop-filter: blur(50px)
+
+.bodyInner
+    position: relative
+    z-index: 2
+    padding: 55px 40px
+    +m
+        padding: 0
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 32px
+        pointer-events: none
+        border: 1.5px solid rgba(255, 255, 255, 0.3)
+        mask-image: linear-gradient(225deg, black, transparent 20%)
+        +m
+            display: none
+
+.logo
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 60px
+    height: 60px
+    margin: 0 auto 24px
+    background: rgba(248, 248, 248, 0.05)
+    box-shadow: 2px 4px 16px 0px rgba(248, 248, 248, 0.06) inset
+    backdrop-filter: blur(50px)
+    border-radius: 50%
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 50%
+        pointer-events: none
+        border: 1.5px solid rgba(255, 255, 255, 0.05)
+        mask-image: linear-gradient(170deg, black, transparent 50%)
+    img
+        opacity: 1
+
+.title
+    margin-bottom: 40px
+    text-align: center
+    +h4
+    +m
+        font-size: 28px
+
+.line
+    position: absolute
+    top: 50%
+    width: 400px
+    transform: translateY(-50%)
+    +m
+        display: none
+    &:nth-child(1)
+        right: calc(100% + 16px)
+    &:nth-child(2)
+        left: calc(100% + 16px)
+    img
+        opacity: 1
+
+.foot
+    margin-top: 32px
+    +m
+        display: none
+
+.avatars
+    display: flex
+    justify-content: center
+    margin: -2px 0
+
+.avatar
+    flex-shrink: 0
+    width: 44px
+    height: 44px
+    border: 2px solid #202020
+    border-radius: 50%
+    overflow: hidden
+    img
+        object-fit: cover
+        opacity: 1
+    &:not(:first-child)
+        margin-left: -16px
+
+.text
+    margin-bottom: 24px
+    +body
+    color: rgba($n2, .4)
+    span
+        font-weight: 700
+        color: rgba($n2, .76)
+
+
+// Add these styles to your existing EntryScreen.module.sass file
+
+.otpContainer
+    text-align: center
+
+.otpText
+    margin-bottom: 32px
+    color: rgba($n2, .6)
+    +body
+    +m
+        margin-bottom: 24px
+
+.otpInputs
+    display: flex
+    justify-content: center
+    gap: 16px
+    margin-bottom: 32px
+    +m
+        gap: 12px
+        margin-bottom: 24px
+
+.otpInput
+    width: 56px
+    height: 56px
+    border: 1.5px solid rgba(255, 255, 255, 0.2)
+    border-radius: 12px
+    background: rgba(248, 248, 248, 0.05)
+    color: #fff
+    font-size: 24px
+    font-weight: 600
+    text-align: center
+    outline: none
+    transition: all 0.2s ease
+    backdrop-filter: blur(10px)
+    +m
+        width: 48px
+        height: 48px
+        font-size: 20px
+    
+    &:focus
+        border-color: rgba(255, 255, 255, 0.6)
+        background: rgba(248, 248, 248, 0.1)
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1)
+    
+    &::placeholder
+        color: rgba(255, 255, 255, 0.3)
+
+.verifyButton
+    width: 100%
+    height: 48px
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%)
+    border: none
+    border-radius: 12px
+    color: #fff
+    font-size: 16px
+    font-weight: 600
+    cursor: pointer
+    transition: all 0.2s ease
+    margin-bottom: 24px
+    
+    &:hover:not(:disabled)
+        background: linear-gradient(135deg, #357ABD 0%, #2E6BA8 100%)
+        transform: translateY(-1px)
+    
+    &:disabled
+        opacity: 0.5
+        cursor: not-allowed
+        transform: none
+
+.otpActions
+    display: flex
+    justify-content: space-between
+    align-items: center
+    +m
+        flex-direction: column
+        gap: 16px
+
+.resendButton, .backButton
+    background: none
+    border: none
+    color: rgba(255, 255, 255, 0.6)
+    font-size: 14px
+    cursor: pointer
+    transition: color 0.2s ease
+    text-decoration: underline
+    
+    &:hover
+        color: rgba(255, 255, 255, 0.8)

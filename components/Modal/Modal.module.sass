@@ -1,0 +1,55 @@
+@import @/styles/variables
+    
+.modal
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 990
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    height: 100%
+    padding: 12px
+    overflow: auto
+    &:before
+        content: ""
+        position: fixed
+        inset: 0
+        z-index: -1
+        background: rgba(#232222, .9)
+
+.container
+    position: relative
+    width: 100%
+    max-width: 400px
+    border-radius: 32px
+
+.inner
+    position: relative
+    padding: 32px
+    border-radius: 32px
+    &:before,
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 32px
+        pointer-events: none
+    &:before
+        background: rgba($n3, .7)
+        box-shadow: 2px 4px 16px 0px rgba(248, 248, 248, 0.06) inset, 0px 24px 24px -16px rgba(5, 5, 5, 0.09), 0px 6px 13px 0px rgba(5, 5, 5, 0.10), 0px 6px 4px -4px rgba(5, 5, 5, 0.10), 0px 5px 2px -4px rgba(5, 5, 5, 0.25)
+        backdrop-filter: blur(16px)
+    &:after
+        border: 1.5px solid rgba(255, 255, 255, 0.05)
+        mask-image: linear-gradient(175deg, black, transparent 60%)
+
+.content
+    position: relative
+    z-index: 1
+
+.close
+    position: absolute
+    top: 12px
+    right: 12px
+    z-index: 10

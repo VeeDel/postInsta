@@ -1,0 +1,25 @@
+@import @/styles/variables
+
+.replies
+    margin-top: 8px
+    padding: 12px
+    border-radius: 20px
+    background: rgba($n2, .02)
+
+.post
+    &:last-child
+        &:after
+            display: none
+
+.more
+    display: inline-flex
+    align-items: center
+    margin: 12px 0 0 64px
+    +base-2m
+    color: rgba($n2, .76)
+    transition: color .2s
+    svg
+        margin-left: 8px
+        fill: $text-secondary
+    &:hover
+        color: $text-primary

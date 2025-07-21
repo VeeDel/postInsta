@@ -1,0 +1,44 @@
+@import @/styles/variables
+
+.theme
+    display: flex
+    gap: 20px
+
+.item
+    cursor: pointer
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    +m
+        flex: 1
+    &:hover,
+    &.active
+        .title
+            color: rgba($n2, .76)
+    &.active
+        .image
+            &:before
+                opacity: 1
+    
+.image
+    position: relative
+    box-shadow: 0px 33.73px 33.73px -22.486px rgba(28, 32, 40, 0.50)
+    &:before
+        content: ''
+        position: absolute
+        inset: -4px
+        pointer-events: none
+        background: rgba($n1, .01)
+        border: 1.5px solid rgba($n1, .64)
+        border-radius: 16px
+        opacity: 0
+        transition: opacity .2s
+    img
+        opacity: 1
+
+.title
+    position: relative
+    z-index: 1
+    margin-top: 12px
+    text-align: center
+    +caption-sm
+    color: rgba($n2, .4)
+    transition: color .2s

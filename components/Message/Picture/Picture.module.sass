@@ -1,0 +1,41 @@
+@import @/styles/variables
+
+.picture
+    position: relative
+    max-width: 880px
+    width: 100%
+    margin-top: 16px
+    img
+        width: 100%
+        height: auto
+        border-radius: 32px
+        opacity: 1
+        +m
+            border-radius: 24px
+
+.buttons
+    position: absolute
+    top: 12px
+    right: 12px
+    display: flex
+    gap: 8px
+    +m
+        top: 8px
+        right: 8px
+    .button
+        &:hover
+            background: rgba($n4, .7)
+
+.containerModal
+    max-width: 100%
+    width: auto
+    img
+        max-width: 100%
+        height: auto
+        border-radius: 32px
+
+.innerModal
+    padding: 0
+    &:before,
+    &:after
+        display: none

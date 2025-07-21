@@ -1,0 +1,36 @@
+@import @/styles/variables
+
+.button
+    &.buttonCircle
+        width: 40px
+        height: 40px
+        font-size: 0
+    &.buttonText
+        min-width: 128px
+        +m
+            min-width: 44px
+            width: 44px
+            padding: 0
+            font-size: 0
+    &.following
+        background: rgba(248, 248, 248, 0.01)
+        svg
+            fill: $text-secondary
+    &.unfollowing
+        color: #BD3027
+        svg
+            width: 30px
+            height: 30px
+            fill: #BD3027
+
+.icon
+    &.hideIcon
+        display: none
+        +m
+            display: inline-block
+
+.tooltip
+    &.hideTooltip
+        display: none
+        +m
+            display: block

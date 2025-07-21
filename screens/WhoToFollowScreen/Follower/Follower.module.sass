@@ -1,0 +1,50 @@
+@import @/styles/variables
+
+.follower
+    position: relative
+    width: calc(33.333% - 8px)
+    margin: 8px 4px 0
+    +m
+        width: calc(50% - 8px)
+    .avatar
+        width: 60px
+        height: 60px
+        margin: 0 auto 20px
+        &:before
+            width: 16px
+    .followButton
+        position: absolute
+        top: 8px
+        right: 8px
+        z-index: 2
+        visibility: hidden
+        opacity: 0
+        transition: all .2s
+        +m
+            visibility: visible
+            opacity: 1
+    &:hover
+        .link
+            background: rgba($n2, .05)
+        .followButton
+            visibility: visible
+            opacity: 1
+
+.link
+    display: block
+    padding: 64px 16px
+    border-radius: 20px
+    background: rgba($n2, .02)
+    text-align: center
+    transition: background .2s
+    +m
+        padding: 48px 12px
+
+.name
+    +base-2m
+    color: rgba($n2, .76)
+
+.login
+    margin-top: 4px
+    +base-2r
+    color: rgba($n2, .25)

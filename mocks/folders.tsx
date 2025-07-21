@@ -1,0 +1,58 @@
+export const folders = [
+    {
+        id: "0",
+        name: "All folders",
+        counter: 83,
+        icon: "folder",
+        iconColor: "#A5A5A4",
+    },
+    {
+        id: "1",
+        name: "Inspirations",
+        counter: 5,
+        icon: "stars",
+        iconColor: "#A5A5A4",
+    },
+    {
+        id: "2",
+        name: "Design tools",
+        counter: 7,
+        icon: "tools",
+        iconColor: "#A5A5A4",
+    },
+    {
+        id: "3",
+        name: "UX/UI",
+        counter: 15,
+        icon: "card",
+        iconColor: "#A5A5A4",
+    },
+    {
+        id: "4",
+        name: "Development",
+        counter: 10,
+        icon: "earth",
+        iconColor: "#A5A5A4",
+    },
+    {
+        id: "5",
+        name: "Ideas",
+        counter: 15,
+        icon: "heart",
+        iconColor: "#A5A5A4",
+    },
+    {
+        id: "6",
+        name: "Applications",
+        counter: 23,
+        icon: "mobile",
+        iconColor: "#A5A5A4",
+    },
+    {
+        id: "7",
+        name: "Tutorial",
+        counter: 18,
+        icon: "edit",
+        iconColor: "#A5A5A4",
+    },
+];

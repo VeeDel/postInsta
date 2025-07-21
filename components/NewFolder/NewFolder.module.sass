@@ -1,0 +1,59 @@
+@import @/styles/variables
+
+.newFolder
+    position: relative
+    display: flex
+    align-items: center
+    height: 68px
+    padding: 0 12px
+    border-radius: 20px
+    background: rgba($n3, .8)
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 20px
+        pointer-events: none
+        border: 1px solid rgba(255, 255, 255, 0.05)
+        mask-image: linear-gradient(170deg, black, transparent 70%)
+
+.field
+    flex-grow: 1
+    font-size: 0
+
+.input
+    width: 100%
+    height: 20px
+    padding: 0
+    background: transparent
+    box-shadow: none
+    border: none
+    border-radius: 0
+    resize: none
+    background: transparent
+    +base-2m
+    color: rgba($n2, .76)
+    -webkit-overflow-scrolling: touch
+    outline: none
+    &::placeholder
+        color: rgba($n2, .21)
+
+.add
+    position: relative
+    flex-shrink: 0
+    z-index: 2
+    padding: 0
+    border: 0
+    background: transparent
+    font-size: 0
+    opacity: 0
+    visibility: hidden
+    cursor: pointer
+    transition: all .2s
+    svg
+        fill: $n2
+    &.visible
+        opacity: .25
+        visibility: visible
+    &:hover
+        opacity: .56

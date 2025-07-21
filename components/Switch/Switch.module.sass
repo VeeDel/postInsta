@@ -1,0 +1,35 @@
+@import @/styles/variables
+
+.switch
+    position: relative
+    flex-shrink: 0
+    width: 44px
+    height: 24px
+    border-radius: 12px
+    background: rgba($n2, .05)
+    transition: background .2s
+    &:before,
+    &:after
+        content: ''
+        position: absolute
+        top: 4px
+        left: 4px
+        z-index: 1
+        width: 16px
+        height: 16px
+        border-radius: 50%
+        transition: all .2s
+    &:before
+        background: rgba($n2, .3)
+    &:after
+        background: linear-gradient(180deg, rgba(248, 248, 248, 0.90) 0%, rgba(248, 248, 248, 0.30) 100%)
+        opacity: 0
+    &.checked
+        background: rgba($n3, .5)
+        &:before,
+        &:after
+            transform: translateX(20px)
+        &:before
+            opacity: 0
+        &:after
+            opacity: 1

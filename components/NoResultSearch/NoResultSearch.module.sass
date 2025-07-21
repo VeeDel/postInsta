@@ -1,0 +1,27 @@
+@import @/styles/variables
+
+.noResultSearch
+    position: relative
+    height: calc(100svh - 68px)
+    overflow: hidden
+
+.preview
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 350px
+    transform: translate(-50%, calc(-50% - 32px))
+
+.text
+    position: absolute
+    left: 12px
+    right: 12px
+    bottom: 24px
+    text-align: center
+    +base-2r
+    color: rgba($n2, .4)
+    span
+        color: rgba($n2, .76)
+    &.textWithNavigation
+        +m
+            bottom: 96px

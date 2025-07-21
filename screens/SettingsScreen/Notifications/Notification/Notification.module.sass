@@ -1,0 +1,72 @@
+@import @/styles/variables
+
+.notification
+    position: relative
+    display: flex
+    align-items: center
+    padding: 16px
+    background: rgba($n2, .02)
+    border-radius: 20px
+    &:not(:last-child)
+        margin-bottom: 12px
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 20px
+        pointer-events: none
+        border: 1px solid rgba(255, 255, 255, 0.05)
+        mask-image: linear-gradient(175deg, black, transparent 50%)
+
+.image
+    flex-shrink: 0
+    width: 116px
+    height: 90px
+    margin: 0 14px 0 -6px
+    img
+        opacity: 1
+
+.details
+    flex-grow: 1
+    padding-right: 16px
+
+.title
+    margin-bottom: 4px
+    +base-2m
+    color: rgba($n2, .76)
+
+.description
+    margin-bottom: 12px
+    +caption-r
+    color: rgba($n2, .4)
+
+.button
+    text-decoration: underline
+    +caption-r
+    color: rgba($n2, .76)
+    transition: text-decoration .2s
+    &:hover
+        text-decoration-color: transparent
+
+.close
+    position: absolute
+    top: 8px
+    right: 8px
+    z-index: 1
+    background: rgba($n3, .5)
+    border-radius: 50%
+    font-size: 0
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 50%
+        pointer-events: none
+        border: 1px solid rgba(255, 255, 255, 0.1)
+        mask-image: linear-gradient(170deg, black, transparent 60%)
+    svg
+        fill: rgba($n2, .56)
+        transition: fill .2s
+    &:hover
+        svg
+            fill: $text-secondary

@@ -1,0 +1,25 @@
+@import @/styles/variables
+
+.cookieSettings
+    padding: 8px
+
+.item
+    display: flex
+    align-items: center
+    padding: 10px 8px
+    border-radius: 12px
+    transition: background .2s
+    &:hover
+        background: rgba($n2, .05)
+
+.details
+    flex-grow: 1
+    padding-right: 12px
+
+.title
+    margin-bottom: 4px
+    +base-2sm
+
+.description
+    +caption-r
+    color: rgba($n2, .4)

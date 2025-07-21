@@ -1,0 +1,5 @@
+# Ignore build and cache files
+.next/
+node_modules/
+.env
+dist/

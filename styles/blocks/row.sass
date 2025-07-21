@@ -1,0 +1,30 @@
+.row
+    display: flex
+    min-height: 100svh
+    +m
+        display: block
+        min-height: auto
+
+.row-sidebar
+    width: 440px
+    background: rgba($n3, .8)
+    +xl
+        width: 400px
+    +w
+        width: 320px
+    +t
+        width: 280px
+    +m
+        width: 100%
+
+.row-container
+    width: calc(100% - 440px)
+    background: rgba($n3, .7)
+    +xl
+        width: calc(100% - 400px)
+    +w
+        width: calc(100% - 320px)
+    +t
+        width: calc(100% - 280px)
+    +m
+        width: 100%

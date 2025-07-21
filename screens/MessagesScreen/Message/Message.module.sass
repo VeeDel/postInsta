@@ -1,0 +1,105 @@
+@import @/styles/variables
+
+.message
+    position: relative
+    display: flex
+    align-items: flex-start
+    margin-top: 8px
+    padding: 12px 36px 12px 12px
+    border-radius: 20px
+    background: rgba($n2, .02)
+    cursor: pointer
+    transition: background .2s
+    &:after
+        content: ""
+        position: absolute
+        inset: 0
+        border-radius: 20px
+        pointer-events: none
+        border: 1px solid rgba(255, 255, 255, 0.1)
+        mask-image: linear-gradient(175deg, black, transparent 55%)
+        opacity: 0
+        transition: opacity .2s
+    &:hover
+        background: rgba($n2, .05)
+        &:after
+            opacity: 1
+        .content
+            color: rgba($n2, .56)
+    &.active
+        background: rgba($n2, .1)
+        &:after
+            opacity: 1
+        .content
+            color: rgba($n2, .76)
+    &.messageRequest
+        &:hover
+            .new
+                opacity: 0
+            .close
+                opacity: 1
+
+.link
+    position: absolute
+    inset: 0
+    border-radius: 20px
+
+.avatar,
+.name
+    position: relative
+    z-index: 2
+
+.details
+    width: calc(100% - 44px)
+    padding-left: 12px
+
+.line
+    display: flex
+    flex-wrap: wrap
+    padding: 2px 0
+
+.name
+    margin-right: 8px
+    +base-2sm
+    color: $text-primary
+
+.date
+    +base-2r
+    color: rgba($n2, .25)
+
+.content
+    margin-top: 4px
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    +caption-r
+    color: rgba($n2, .4)
+    transition: color .2s
+
+.new
+    position: absolute
+    top: 20px
+    right: 20px
+    width: 8px
+    height: 8px
+    border-radius: 50%
+    background: #55F08B
+    transition: opacity .2s
+
+.close
+    position: absolute
+    top: 12px
+    right: 12px
+    z-index: 2
+    background: rgba($n1, .05)
+    border-radius: 50%
+    font-size: 0
+    opacity: 0
+    transition: background .2s, opacity .2s
+    svg
+        fill: rgba($n2, .8)
+        transition: fill .2s
+    &:hover
+        background: rgba($n1, .1)
+        svg
+            fill: $n2
