@@ -6,6 +6,7 @@ export interface userDisconnectedPayload {
     socket_id: string;
 }
 
-export interface newUserChatListPayload {
-    socket_id: string;
+export interface connectServerPayload {
+    socket_id:string;
+    event_name:string;
 }

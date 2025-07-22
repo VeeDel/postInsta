@@ -1,8 +1,8 @@
 export interface SendOtpPayload {
-  mobile_number: string;
+  mobile: string;
   country_code: string;
   device_token: string;
-  login_type: string;
+  country: string;
   platform_type: string;
 }
 
@@ -37,4 +37,32 @@ export interface LoginPayload {
 export interface VerifyOtpDescopePayload {
   mobile:string;
   otp: string;
+}
+
+export interface SocialLoginPayload {
+  email: string;
+  first_name: string;
+  device_token: string;
+  platform_type: string;
+  profile_pic:string;
+}
+
+export interface ResetPasswordPayload {
+  email:string;
+  password:string;
+  cnf_pass:string;
+}
+
+export interface ForgotPasswordPayload {
+  email:string;
+}
+
+export interface emailSendOtpPayload {
+  email:string;
+  platform_type:string;
+}
+
+export interface sendOtpDescopePayload {
+  mobile:string;
+  country_code:string;
 }
