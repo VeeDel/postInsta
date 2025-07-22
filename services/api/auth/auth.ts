@@ -1,5 +1,5 @@
 import { axiosInstance } from "../axiosInstance";
-import { CheckOtpPayload, CheckVerifiedCodePayload, EmailCheckOtpPayload, LoginPayload, ResetPasswordPayload, SendOtpPayload, VerifyOtpDescopePayload } from './authInterface';
+import { CheckOtpPayload, CheckVerifiedCodePayload, EmailCheckOtpPayload, emailSendOtpPayload, ForgotPasswordPayload, LoginPayload, ResetPasswordPayload, sendOtpDescopePayload, SendOtpPayload, SocialLoginPayload, VerifyOtpDescopePayload } from './authInterface';
 
 // send Otp:---
 export const sendOtp = async (payload: SendOtpPayload) => {
@@ -40,5 +40,35 @@ export const login = async (payload: LoginPayload) => {
 // Verify Otp Descope :---
 export const VerifyOtpDescope = async (payload: VerifyOtpDescopePayload) => {
   const response = await axiosInstance.post("/api/verifyotp");
+  return response.data;
+};
+
+// Social Login :---
+export const SocialLogin = async (payload: SocialLoginPayload) => {
+  const response = await axiosInstance.post("/api/social_login");
+  return response.data;
+};
+
+// Reset Password :---
+export const ResetPassword = async (payload: ResetPasswordPayload) => {
+  const response = await axiosInstance.post("/api/reset_pass");
+  return response.data;
+};
+
+// Forgot Password :---
+export const ForgotPassword = async (payload: ForgotPasswordPayload) => {
+  const response = await axiosInstance.post("/api/forgot_pass");
+  return response.data;
+};
+
+// Email Send Otp :---
+export const emailSendOtp = async (payload: emailSendOtpPayload) => {
+  const response = await axiosInstance.post("/api/email_send_otp");
+  return response.data;
+};
+
+// Send Otp Descope :---
+export const sendOtpDescope = async (payload: sendOtpDescopePayload) => {
+  const response = await axiosInstance.post("/api/sendotp");
   return response.data;
 };

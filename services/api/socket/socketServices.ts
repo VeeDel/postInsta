@@ -1,5 +1,5 @@
 import { axiosInstance } from "../axiosInstance";
-import { newUserChatListPayload, userConnectedPayload, userDisconnectedPayload } from './socketInterface';
+import { connectServerPayload, userConnectedPayload, userDisconnectedPayload } from './socketInterface';
 
 // User Connected:---
 export const userConnected = async (payload: userConnectedPayload) => {
@@ -13,11 +13,12 @@ export const userDisconnected = async (payload: userDisconnectedPayload) => {
   return response.data;
 };
 
-// new User Chat List:---
-export const newUserChatList = async (payload: newUserChatListPayload) => {
-  const response = await axiosInstance.post("/api/new_user_chat_list", payload);
+
+
+// User DisConnected:---
+export const connectServer = async (payload: connectServerPayload) => {
+  const response = await axiosInstance.post("/api/connect_server", payload);
   return response.data;
 };
-
 
 

@@ -1,5 +1,5 @@
 import { axiosInstance } from "../axiosInstance";
-import { addStoryHighlightPayload, addStoryPayload, deleteStoryPayload, likeStoryPayload, myStoryDeletePayload, storySeenListPayload, updatePaymentGatewayPayload, viewStoryPayload } from './storyInterface';
+import { addStoryHighlightPayload, addStoryPayload, deleteStoryPayload, likeStoryPayload, myStoryDeletePayload, secondUserStoryHighlightPayload, storySeenListPayload, viewStoryPayload } from './storyInterface';
 
 
 // add Story:---
@@ -44,8 +44,8 @@ export const myStoryDelete = async (payload: myStoryDeletePayload) => {
   return response.data;
 };
 
-// my Story Delete:---
-export const updatePaymentGateway = async (payload: updatePaymentGatewayPayload) => {
-  const response = await axiosInstance.post("/api/update_payment_gateway", payload);
+// second User Story Highlight:---
+export const secondUserStoryHighlight = async (payload: secondUserStoryHighlightPayload) => {
+  const response = await axiosInstance.post("/api/second_user_story_hightlight", payload);
   return response.data;
 };
