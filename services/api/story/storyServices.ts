@@ -49,3 +49,15 @@ export const secondUserStoryHighlight = async (payload: secondUserStoryHighlight
   const response = await axiosInstance.post("/api/second_user_story_hightlight", payload);
   return response.data;
 };
+
+// Get Story By User:---
+export const getStoryByUser = async () => {
+  const response = await axiosInstance.post("/api/get_story_by_user");
+  return response.data;
+};
+
+// My Story Highlight:---
+export const myStoryHighlight = async () => {
+  const response = await axiosInstance.post("/api/my_story_hightlight");
+  return response.data;
+};

@@ -36,3 +36,7 @@ export interface newMessageListPayload {
     to_user:string;
     socket_id:string;
 }
+
+export interface getReportTextPayload {
+    type:string;
+}

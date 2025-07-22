@@ -42,3 +42,21 @@ export const editKeyword = async (payload: editKeywordPayload) => {
   const response = await axiosInstance.post("/api/editKeyword", payload);
   return response.data;
 };
+
+// List All Languages:---
+export const listAllLanguages = async () => {
+  const response = await axiosInstance.post("/api/listAllLanguages");
+  return response.data;
+};
+
+// Fetch Languages:---
+export const fetchLanguages = async () => {
+  const response = await axiosInstance.post("/api/fetchLanguages");
+  return response.data;
+};
+
+// Fetch Default Language:---
+export const fetchDefaultLanguage = async () => {
+  const response = await axiosInstance.post("/api/fetchDefaultLanguage");
+  return response.data;
+};

@@ -21,3 +21,17 @@ export const getSecondUserFollowing = async (payload: getSecondUserFollowingPayl
 };
 
 
+// get My Followers:---
+export const getMyFollowers = async (payload: getSecondUserFollowingPayload) => {
+  const response = await axiosInstance.post("/api/my_followers", payload);
+  return response.data;
+};
+
+
+// get My Following:---
+export const getMyFollowing = async (payload: getSecondUserFollowingPayload) => {
+  const response = await axiosInstance.post("/api/my_following", payload);
+  return response.data;
+};
+
+

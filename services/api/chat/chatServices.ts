@@ -1,6 +1,6 @@
 import { axiosInstance } from "../axiosInstance";
 
-import { getMessageListPayload, newChatApiPayload, newMessageListPayload, newUserChatListPayload, sendChatMessagePayload } from './chatInterface';
+import { getMessageListPayload, getReportTextPayload, newChatApiPayload, newMessageListPayload, newUserChatListPayload, sendChatMessagePayload } from './chatInterface';
 
 //Send Chat Message:----
 export const sendChatMessage = async (payload: sendChatMessagePayload) => {
@@ -31,6 +31,20 @@ export const newUserChatList = async (payload: newUserChatListPayload) => {
 //new Message List:----
 export const newMessageList = async (payload: newMessageListPayload) => {
   const response = await axiosInstance.post("/api/new_message_list", payload);
+  return response.data;
+};
+
+
+//get Report Text:----
+export const getReportText = async (payload: getReportTextPayload) => {
+  const response = await axiosInstance.post("/api/get_report_text", payload);
+  return response.data;
+};
+
+
+//user Chat List:----
+export const getUserChatList = async () => {
+  const response = await axiosInstance.post("/api/user_chat_list");
   return response.data;
 };
 

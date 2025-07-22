@@ -21,3 +21,11 @@ export interface profileBlockedPayload {
 export interface usernameCheckPayload {
   username: string;
 }
+
+export interface userAddReportPayload {
+  to_user_id:number;
+  report_text_id:number;
+  post_id:number;
+  type:string;
+}
+

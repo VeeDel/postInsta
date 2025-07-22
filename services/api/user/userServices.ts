@@ -1,5 +1,5 @@
 import { axiosInstance } from "../axiosInstance";
-import { updateUserProfilePayload, userProfilePayload, profileBlockedPayload, usernameCheckPayload } from './userInterface';
+import { updateUserProfilePayload, userProfilePayload, profileBlockedPayload, usernameCheckPayload, userAddReportPayload } from './userInterface';
 
 //get user profile:----
 export const userProfile = async (payload: userProfilePayload) => {
@@ -27,7 +27,7 @@ export const profileBlocked = async (payload: profileBlockedPayload) => {
   return response.data;
 };
 
-// profile Blocked:---
+// username Check:---
 export const usernameCheck = async (payload: usernameCheckPayload) => {
   const response = await axiosInstance.post(
     "/api/username_check",
@@ -35,3 +35,36 @@ export const usernameCheck = async (payload: usernameCheckPayload) => {
   );
   return response.data;
 };
+
+// user Add Reort:---
+export const userAddReport = async (payload: userAddReportPayload) => {
+  const response = await axiosInstance.post(
+    "/api/user_add_report",
+    payload
+  );
+  return response.data;
+};
+
+
+
+
+
+
+// All userlist:---
+export const allUserlist = async () => {
+  const response = await axiosInstance.post(
+    "/api/all_userlist"
+  );
+  return response.data;
+};
+
+
+
+// get Avtar Image:---
+export const getAvtarImages = async () => {
+  const response = await axiosInstance.post(
+    "/api/get_avtar_image"
+  );
+  return response.data;
+};
+
