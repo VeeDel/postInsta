@@ -58,7 +58,7 @@ const Bio = ({
         </div>
       </div>
       <div className={styles.description}>
-        {bio.split("\n").map((line, index) => (
+        {bio?.split("\n").map((line, index) => (
           <p key={index}>{line}</p>
         ))}
       </div>
