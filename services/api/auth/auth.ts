@@ -1,5 +1,17 @@
 import { axiosInstance } from "../axiosInstance";
-import { CheckOtpPayload, CheckVerifiedCodePayload, EmailCheckOtpPayload, emailSendOtpPayload, ForgotPasswordPayload, LoginPayload, ResetPasswordPayload, sendOtpDescopePayload, SendOtpPayload, SocialLoginPayload, VerifyOtpDescopePayload } from './authInterface';
+import {
+  CheckOtpPayload,
+  CheckVerifiedCodePayload,
+  EmailCheckOtpPayload,
+  emailSendOtpPayload,
+  ForgotPasswordPayload,
+  LoginPayload,
+  ResetPasswordPayload,
+  sendOtpDescopePayload,
+  SendOtpPayload,
+  SocialLoginPayload,
+  VerifyOtpDescopePayload,
+} from "./authInterface";
 
 // send Otp:---
 export const sendOtp = async (payload: SendOtpPayload) => {
@@ -45,7 +57,9 @@ export const VerifyOtpDescope = async (payload: VerifyOtpDescopePayload) => {
 
 // Check Otp:---
 export const checkOtp = async (payload: CheckOtpPayload) => {
-  const response = await axiosInstance.post("/api/check_otp", payload)};
+  const response = await axiosInstance.post("/api/check_otp", payload);
+  return response.data;
+};
 // Social Login :---
 export const SocialLogin = async (payload: SocialLoginPayload) => {
   const response = await axiosInstance.post("/api/social_login");

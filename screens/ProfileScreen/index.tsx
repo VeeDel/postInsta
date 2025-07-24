@@ -21,6 +21,7 @@ const ProfileScreen = () => {
       setLoading(true);
       const payload = { to_user_id: userId };
       const res = await userProfile(payload);
+      console.log(res);
 
       setUser(res?.user_data);
       setUserPosts(res?.rescent_post || []);

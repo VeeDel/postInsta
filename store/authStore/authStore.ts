@@ -10,7 +10,7 @@ interface AuthStore {
 
 export const useAuthStore = create<AuthStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       token: null,
       setToken: (token) => {
         console.log("✅ Token set:", token);
@@ -22,7 +22,32 @@ export const useAuthStore = create<AuthStore>()(
       },
     }),
     {
-      name: "auth-token", // Stored
+      name: "auth-token", // localStorage key
+      // Optional: Add storage configuration
+      storage: {
+        getItem: (name) => {
+          try {
+            const value = localStorage.getItem(name);
+            return value ? JSON.parse(value) : null;
+          } catch {
+            return null;
+          }
+        },
+        setItem: (name, value) => {
+          try {
+            localStorage.setItem(name, JSON.stringify(value));
+          } catch (error) {
+            console.error("Failed to save to localStorage:", error);
+          }
+        },
+        removeItem: (name) => {
+          try {
+            localStorage.removeItem(name);
+          } catch (error) {
+            console.error("Failed to remove from localStorage:", error);
+          }
+        },
+      },
     }
   )
 );
