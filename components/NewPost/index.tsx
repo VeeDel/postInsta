@@ -5,7 +5,7 @@ import Image from "@/components/Image";
 import AddMedia from "@/components/AddMedia";
 import useEventsStore from "@/store/useEventsStore";
 import styles from "./NewPost.module.sass";
-import { addPost } from "services/api/post/postServices";
+import { addPost, postAddComment } from "services/api/post/postServices";
 
 type NewPostProps = {
   className?: string;
@@ -39,14 +39,53 @@ const NewPost = ({
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContent(event.target.value);
   };
+
+  const handleAddPostOrReply = async () => {
+    if (!content || content.trim() === "") {
+      return;
+    }
+    try {
+      // Check if reply is true to decide which function to call
+      if (reply) {
+        await handleReply();
+      } else {
+        await handlePost();
+      }
+
+      // Clear content after successful API call
+      setContent(""); // Assuming you're using useState for content
+    } catch (error) {
+      console.error("Error in posting:", error);
+    }
+  };
+
   const handlePost = async () => {
     try {
       const payload = {
         content: content,
       };
       const res = await addPost(payload);
+      console.log("this is a post");
+      return res;
     } catch (error) {
       console.error(error);
+      throw error;
+    }
+  };
+
+  const handleReply = async () => {
+    try {
+      const payload = {
+        post_id: 2,
+        text: content,
+      };
+      const res = await postAddComment(payload);
+      console.log(res);
+      console.log("this is a reply");
+      return res;
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
   };
 
@@ -94,7 +133,7 @@ const NewPost = ({
                         </button>
                     </div> */}
           <button
-            onClick={handlePost}
+            onClick={handleAddPostOrReply}
             className={cn("button", styles.button, {
               [styles.buttonForReply]: reply,
             })}

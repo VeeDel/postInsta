@@ -57,7 +57,8 @@ const ProfileEditScreen = () => {
     setIsLoading(true);
     const formData = new FormData();
 
-    formData.append("user_id", user?.user_id || "");
+    // formData.append("user_id", user?.user_id || "");
+    formData.append("user_id", "1");
     formData.append("first_name", name);
     formData.append("last_name", user?.last_name || "");
     formData.append("email", user?.email || "");

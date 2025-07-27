@@ -19,7 +19,7 @@ const ProfileScreen = () => {
   const fetchProfile = async (userId) => {
     try {
       setLoading(true);
-      const payload = { to_user_id: userId };
+      const payload = { to_user_id: "10" };
       const res = await userProfile(payload);
       console.log(res);
 
@@ -48,7 +48,7 @@ const ProfileScreen = () => {
 
   useEffect(() => {
     if (!user) {
-      const userId = 2;
+      const userId = user?.user_id;
       fetchProfile(userId);
     } else {
       getAllPosts();

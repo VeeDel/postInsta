@@ -54,3 +54,22 @@ export const useUserStore = create<UserStore>()(
     }
   )
 );
+
+export const useUserLoginStore = create<UserStore>()(
+  persist(
+    (set) => ({
+      user: null,
+      setUser: (data) => {
+        console.log("✅ USER STORED IN ZUSTAND:", data); // ✅ log
+        set({ user: data });
+      },
+      clearUser: () => {
+        console.log("🧹 USER CLEARED FROM ZUSTAND");
+        set({ user: null });
+      },
+    }),
+    {
+      name: "user-storage",
+    }
+  )
+);
