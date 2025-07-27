@@ -17,7 +17,11 @@ export const GetUserChatlist = async () => {
 //Send Chat Message:----
 type ChatMessageInput = FormData | sendChatMessagePayload;
 export const sendChatMessage = async (payload: ChatMessageInput) => {
-  const response = await axiosInstance.post("/api/chat_api", payload);
+  const response = await axiosInstance.post("/api/chat_api", payload, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
   return response.data;
 };
 
