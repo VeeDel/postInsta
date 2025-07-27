@@ -22,8 +22,7 @@ export const useAuthStore = create<AuthStore>()(
       },
     }),
     {
-      name: "auth-token", // localStorage key
-      // Optional: Add storage configuration
+      name: "auth-token",
       storage: {
         getItem: (name) => {
           try {

@@ -7,10 +7,14 @@ import { media } from "@/mocks/media";
 import { userProfilePayload } from "services/api/user/userInterface";
 import { userProfile } from "services/api/user/userServices";
 import { useEffect, useState } from "react";
-import { useUserStore } from "@/store/userstore/userStore";
+import { useUserLoginStore, useUserStore } from "@/store/userstore/userStore";
 import { getAllLatestPost } from "services/api/post/postServices";
 
 const ProfileScreen = () => {
+  // zustang imports:-----
+  const { userDetails } = useUserLoginStore();
+
+  // usestate imports:-----
   const { setUser, user } = useUserStore();
   const [userPosts, setUserPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -48,7 +52,7 @@ const ProfileScreen = () => {
 
   useEffect(() => {
     if (!user) {
-      const userId = user?.user_id;
+      const userId = userDetails?.user_id;
       fetchProfile(userId);
     } else {
       getAllPosts();
