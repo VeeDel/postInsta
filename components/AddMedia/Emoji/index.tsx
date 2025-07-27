@@ -4,37 +4,46 @@ import styles from "./Emoji.module.sass";
 
 import { emojies } from "@/mocks/emojies";
 
-type EmojiProps = {};
+type EmojiProps = {
+  setContent: () => void;
+  content: string;
+};
 
-const Emoji = ({}: EmojiProps) => {
-    const [search, setSearch] = useState("");
+const Emoji = ({ setContent, content }: EmojiProps) => {
+  const [search, setSearch] = useState("");
 
-    const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setSearch(event.target.value);
-    };
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value);
+  };
 
-    const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-    };
+  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
 
-    return (
-        <div className={styles.emoji}>
-            <Search
-                className={styles.search}
-                placeholder="Search emoji..."
-                value={search}
-                onChange={handleSearchChange}
-                onSubmit={handleSearchSubmit}
-            />
-            <div className={styles.list}>
-                {emojies.map((emoji, index) => (
-                    <button className={styles.button} key={index}>
-                        {emoji}
-                    </button>
-                ))}
-            </div>
-        </div>
-    );
+  return (
+    <div className={styles.emoji}>
+      <Search
+        className={styles.search}
+        placeholder="Search emoji..."
+        value={search}
+        onChange={handleSearchChange}
+        onSubmit={handleSearchSubmit}
+      />
+      <div className={styles.list}>
+        {emojies.map((emoji, index) => (
+          <button
+            onClick={() => {
+              setContent(content + emoji);
+            }}
+            className={styles.button}
+            key={index}
+          >
+            {emoji}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Emoji;

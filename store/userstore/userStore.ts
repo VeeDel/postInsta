@@ -30,10 +30,32 @@ export interface UserProfile {
   country: string;
 }
 
+export interface LoginResponse {
+  response_code: string;
+  status: string;
+  message: string;
+  mobile: string;
+  country_code: string;
+  username: string;
+  first_name: string;
+  last_name: string;
+  user_id: string;
+  avtar_id: string;
+  token: string;
+  profile_pic: string;
+  account_status: number;
+}
+
 interface UserStore {
   user: UserProfile | null;
   setUser: (data: UserProfile) => void;
   clearUser: () => void;
+}
+
+interface UserDetailsStore {
+  userDetails: LoginResponse | null;
+  setUserDetails: (data: LoginResponse) => void;
+  clearUserDetails: () => void;
 }
 
 export const useUserStore = create<UserStore>()(
@@ -41,16 +63,35 @@ export const useUserStore = create<UserStore>()(
     (set) => ({
       user: null,
       setUser: (data) => {
-        console.log("✅ USER STORED IN ZUSTAND:", data); // ✅ log
+        console.log("✅ FULL USER PROFILE STORED:", data);
         set({ user: data });
       },
       clearUser: () => {
-        console.log("🧹 USER CLEARED FROM ZUSTAND");
+        console.log("🧹 USER PROFILE CLEARED");
         set({ user: null });
       },
     }),
     {
-      name: "user-storage",
+      name: "user-profile-storage", // ✅ unique key
+    }
+  )
+);
+
+export const useUserLoginStore = create<UserDetailsStore>()(
+  persist(
+    (set) => ({
+      userDetails: null,
+      setUserDetails: (data) => {
+        console.log("✅ LOGIN RESPONSE STORED:", data);
+        set({ userDetails: data });
+      },
+      clearUserDetails: () => {
+        console.log("🧹 LOGIN RESPONSE CLEARED");
+        set({ userDetails: null });
+      },
+    }),
+    {
+      name: "user-login-details", // ✅ unique key
     }
   )
 );

@@ -1,5 +1,11 @@
 import { axiosInstance } from "../axiosInstance";
-import { updateUserProfilePayload, userProfilePayload, profileBlockedPayload, usernameCheckPayload, userAddReportPayload } from './userInterface';
+import {
+  updateUserProfilePayload,
+  userProfilePayload,
+  profileBlockedPayload,
+  usernameCheckPayload,
+  userAddReportPayload,
+} from "./userInterface";
 
 //get user profile:----
 export const userProfile = async (payload: userProfilePayload) => {
@@ -20,19 +26,13 @@ export const updateUserProfile = async (payload: updateUserProfilePayload) => {
 
 // profile Blocked:---
 export const profileBlocked = async (payload: profileBlockedPayload) => {
-  const response = await axiosInstance.post(
-    "/api/profile_blocked",
-    payload
-  );
+  const response = await axiosInstance.post("/api/profile_blocked", payload);
   return response.data;
 };
 
 // username Check:---
 export const usernameCheck = async (payload: usernameCheckPayload) => {
-  const response = await axiosInstance.post(
-    "/api/username_check",
-    payload
-  );
+  const response = await axiosInstance.post("/api/username_check", payload);
   return response.data;
 };
 

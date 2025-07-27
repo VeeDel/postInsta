@@ -1,10 +1,27 @@
 import { axiosInstance } from "../axiosInstance";
 
-import { getMessageListPayload, getReportTextPayload, newChatApiPayload, newMessageListPayload, newUserChatListPayload, sendChatMessagePayload } from './chatInterface';
+import {
+  getMessageListPayload,
+  newChatApiPayload,
+  newMessageListPayload,
+  newUserChatListPayload,
+  sendChatMessagePayload,
+} from "./chatInterface";
+
+//Get User Chat List
+export const GetUserChatlist = async () => {
+  const response = await axiosInstance.post("/api/user_chat_list");
+  return response.data;
+};
 
 //Send Chat Message:----
-export const sendChatMessage = async (payload: sendChatMessagePayload) => {
-  const response = await axiosInstance.post("/api/chat_api", payload);
+type ChatMessageInput = FormData | sendChatMessagePayload;
+export const sendChatMessage = async (payload: ChatMessageInput) => {
+  const response = await axiosInstance.post("/api/chat_api", payload, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
   return response.data;
 };
 
@@ -20,13 +37,11 @@ export const newChatApi = async (payload: newChatApiPayload) => {
   return response.data;
 };
 
-
 //new User Chat List:----
 export const newUserChatList = async (payload: newUserChatListPayload) => {
   const response = await axiosInstance.post("/api/new_user_chat_list", payload);
   return response.data;
 };
-
 
 //new Message List:----
 export const newMessageList = async (payload: newMessageListPayload) => {
@@ -36,10 +51,10 @@ export const newMessageList = async (payload: newMessageListPayload) => {
 
 
 //get Report Text:----
-export const getReportText = async (payload: getReportTextPayload) => {
-  const response = await axiosInstance.post("/api/get_report_text", payload);
-  return response.data;
-};
+// export const getReportText = async (payload: getReportTextPayload) => {
+//   const response = await axiosInstance.post("/api/get_report_text", payload);
+//   return response.data;
+// };
 
 
 //user Chat List:----

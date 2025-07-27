@@ -5,11 +5,13 @@ import styles from "./OtpVerify.module.sass";
 import { useRouter } from "next/navigation";
 import { checkOtp } from "services/api/auth/auth.ts";
 import { useAuthStore } from "@/store/authStore/authStore";
+import { useUserLoginStore } from "@/store/userstore/userStore";
 type OtpVerifyProps = {
   mobileNumber: string;
 };
 
 const OtpVerify = ({ mobileNumber }: OtpVerifyProps) => {
+  const { setUserDetails } = useUserLoginStore();
   const [otp, setOtp] = useState(["", "", "", ""]);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -37,6 +39,7 @@ const OtpVerify = ({ mobileNumber }: OtpVerifyProps) => {
         // Redirect to dashboard or next step
         const token = response.token;
         useAuthStore.getState().setToken(token); // ✅ Save token
+        setUserDetails(response);
         router.push("/");
       }
     } catch (error) {
