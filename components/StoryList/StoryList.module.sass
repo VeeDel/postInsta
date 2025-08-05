@@ -1,0 +1,90 @@
+.storyList
+  display: flex
+  gap: 12px
+  padding: 8px
+  overflow-x: auto
+  scrollbar-width: none // Firefox
+  -ms-overflow-style: none // IE
+
+  &::-webkit-scrollbar
+    display: none
+
+.storyItem
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 68px
+
+.outerRing
+  width: 62px
+  height: 62px
+  border-radius: 50%
+  padding: 3px
+  display: flex
+  align-items: center
+  justify-content: center
+  background: linear-gradient(45deg, #ff0043, #ff9900)
+
+  &.seen
+    background: #ccc
+
+.avatar
+  width: 100%
+  height: 100%
+  object-fit: cover
+  border-radius: 50%
+  border: 2px solid white
+
+.username
+  margin-top: 4px
+  font-size: 12px
+  text-align: center
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  width: 100%
+
+.skeletonRing
+  background: none
+  padding: 0
+
+.skeletonAvatar
+  width: 62px
+  height: 62px
+  border-radius: 50%
+  background: linear-gradient(100deg, #e0e0e0 30%, #f5f5f5 50%, #e0e0e0 70%)
+  background-size: 200% 100%
+  animation: shimmer 1.2s infinite
+
+.skeletonUsername
+  margin-top: 6px
+  width: 40px
+  height: 10px
+  border-radius: 4px
+  background: linear-gradient(100deg, #e0e0e0 30%, #f5f5f5 50%, #e0e0e0 70%)
+  background-size: 200% 100%
+  animation: shimmer 1.2s infinite
+
+@keyframes shimmer
+  0%
+    background-position: -200% 0
+  100%
+    background-position: 200% 0
+
+.addStoryRing
+  border: 2px dashed #1877f2
+  position: relative
+
+.addIcon
+  position: absolute
+  bottom: -2px
+  right: -2px
+  background: #1877f2
+  color: white
+  border-radius: 50%
+  font-size: 16px
+  width: 20px
+  height: 20px
+  display: flex
+  align-items: center
+  justify-content: center

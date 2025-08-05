@@ -17,6 +17,7 @@ import styles from "./HomeScreen.module.sass";
 
 import { posts } from "@/mocks/posts";
 import { useAuthStore } from "@/store/authStore/authStore";
+import StoryList from "@/components/StoryList/StoryList";
 
 const HomeScreen = () => {
   const [tab, setTab] = useState<string>("for-you");
@@ -65,6 +66,7 @@ const HomeScreen = () => {
 
   if (!isMounted) return null;
   //   const { token } = useAuthStore();
+
   return (
     <Layout rightSidebar>
       <div className={styles.main}>
@@ -125,6 +127,7 @@ const HomeScreen = () => {
             </button>
           </div>
         )}
+        <StoryList />
         <div className={styles.body}>
           {resultSearch ? (
             <ResultSearch
