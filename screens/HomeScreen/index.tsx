@@ -18,6 +18,7 @@ import styles from "./HomeScreen.module.sass";
 import { posts } from "@/mocks/posts";
 import { useAuthStore } from "@/store/authStore/authStore";
 import StoryList from "@/components/StoryList/StoryList";
+import { getAllLatestPost } from "services/api/post/postServices";
 
 const HomeScreen = () => {
   const [tab, setTab] = useState<string>("for-you");
@@ -25,6 +26,8 @@ const HomeScreen = () => {
   const [newPost, setNewPost] = useState<string>("");
   const [resultSearch, setResultSearch] = useState<boolean>(false);
   const [visibleSearch, setVisibleSearch] = useState<boolean>(false);
+  const [userPosts, setUserPosts] = useState(null);
+
   const { isNewPost, closeNewPost, toggleNewPost, openMobileNavigation } =
     useEventsStore();
   const [isMounted, setIsMounted] = useState(false);
@@ -65,7 +68,8 @@ const HomeScreen = () => {
   );
 
   if (!isMounted) return null;
-  //   const { token } = useAuthStore();
+
+  //my Implemented:----------
 
   return (
     <Layout rightSidebar>
