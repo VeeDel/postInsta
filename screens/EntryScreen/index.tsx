@@ -65,7 +65,12 @@ const EntryScreen = () => {
               </div>
             </div>
             <div className={styles.logo}>
-              <Image src="/images/star.svg" width={24} height={24} alt="" />
+              <Image
+                src="/images/logotransparent.svg"
+                width={24}
+                height={24}
+                alt=""
+              />
             </div>
             <div className={styles.title}>
               {entry ? "Sign in to Bento" : "Bento Social"}

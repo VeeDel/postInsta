@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import cn from "classnames";
 import Image from "@/components/Image";
@@ -6,8 +6,10 @@ import AddMedia from "@/components/AddMedia";
 import useEventsStore from "@/store/useEventsStore";
 import styles from "./NewPost.module.sass";
 import { addPost, postAddComment } from "services/api/post/postServices";
+import Icon from "../Icon";
 
 type NewPostProps = {
+  item: any;
   className?: string;
   classAddMedia?: string;
   classBodyAddMedia?: string;
@@ -22,6 +24,7 @@ type NewPostProps = {
 };
 
 const NewPost = ({
+  item,
   className,
   classAddMedia,
   classBodyAddMedia,
@@ -35,9 +38,26 @@ const NewPost = ({
   autoFocus,
 }: NewPostProps) => {
   const { isNewPost } = useEventsStore();
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContent(event.target.value);
+  };
+
+  const handleImageSelect = (file: File) => {
+    setSelectedImage(file);
+    // Create image preview URL
+    const previewUrl = URL.createObjectURL(file);
+    setImagePreview(previewUrl);
+  };
+
+  const removeImage = () => {
+    if (imagePreview) {
+      URL.revokeObjectURL(imagePreview);
+    }
+    setSelectedImage(null);
+    setImagePreview(null);
   };
 
   const handleAddPostOrReply = async () => {
@@ -52,21 +72,29 @@ const NewPost = ({
         await handlePost();
       }
 
-      // Clear content after successful API call
-      setContent(""); // Assuming you're using useState for content
+      // Clear content and image after successful API call
+      setContent("");
+      removeImage();
     } catch (error) {
       console.error("Error in posting:", error);
     }
   };
-
+  console.log("selected image", selectedImage);
   const handlePost = async () => {
     try {
-      const payload = {
-        content: content,
-      };
-      const res = await addPost(payload);
-      console.log("this is a post");
-      return res;
+      const formData = new FormData();
+      formData.append("content", content);
+
+      // Add image to formData if selected
+      if (selectedImage) {
+        formData.append("image", selectedImage);
+      }
+
+      console.log("formdata", formData);
+
+      // const res = await addPost(formData);
+      // console.log("response of image upload", res);
+      // return res;
     } catch (error) {
       console.error(error);
       throw error;
@@ -75,11 +103,16 @@ const NewPost = ({
 
   const handleReply = async () => {
     try {
-      const payload = {
-        post_id: 2,
-        text: content,
-      };
-      const res = await postAddComment(payload);
+      const formData = new FormData();
+      formData.append("post_id", item?.id);
+      formData.append("text", content);
+
+      // Add image to formData if selected
+      if (selectedImage) {
+        formData.append("image", selectedImage);
+      }
+
+      const res = await postAddComment(formData);
       console.log(res);
       console.log("this is a reply");
       return res;
@@ -95,7 +128,7 @@ const NewPost = ({
     }
   };
 
-  const active = isNewPost || content !== "" || full;
+  const active = isNewPost || content !== "" || full || selectedImage;
 
   return (
     <div
@@ -121,17 +154,18 @@ const NewPost = ({
               onKeyDown={handleKeyDown}
             />
           </div>
-          {/* <div className={styles.preview}>
-                        <Image
-                            src="/images/post-pic-1.jpg"
-                            width={688}
-                            height={304}
-                            alt=""
-                        />
-                        <button className={cn("button-circle", styles.close)}>
-                            <Icon name="close-large" />
-                        </button>
-                    </div> */}
+          {/* Image Preview */}
+          {imagePreview && (
+            <div className={styles.preview}>
+              <Image src={imagePreview} width={688} height={304} alt="" />
+              <button
+                className={cn("button-circle", styles.close)}
+                onClick={removeImage}
+              >
+                <Icon name="close-large" />
+              </button>
+            </div>
+          )}
           <button
             onClick={handleAddPostOrReply}
             className={cn("button", styles.button, {
@@ -158,6 +192,7 @@ const NewPost = ({
               file
               bodyUp={bodyUp}
               bodyLeft={bodyLeft}
+              onImageSelect={handleImageSelect}
             />
             <AddMedia
               className={classAddMedia}
