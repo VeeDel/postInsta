@@ -1,10 +1,26 @@
 import { axiosInstance } from "../axiosInstance";
-import { addStoryHighlightPayload, addStoryPayload, deleteStoryPayload, likeStoryPayload, myStoryDeletePayload, secondUserStoryHighlightPayload, storySeenListPayload, viewStoryPayload } from './storyInterface';
-
+import {
+  addStoryHighlightPayload,
+  addStoryPayload,
+  deleteStoryPayload,
+  likeStoryPayload,
+  myStoryDeletePayload,
+  secondUserStoryHighlightPayload,
+  storySeenListPayload,
+  viewStoryPayload,
+} from "./storyInterface";
 
 // add Story:---
+export const getMystory = async () => {
+  const response = await axiosInstance.post("/api/get_story_by_user");
+  return response.data;
+};
 export const addStory = async (payload: addStoryPayload) => {
-  const response = await axiosInstance.post("/api/add_story", payload);
+  const response = await axiosInstance.post("/api/add_story", payload, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
   return response.data;
 };
 
@@ -28,7 +44,10 @@ export const likeStory = async (payload: likeStoryPayload) => {
 
 // add Story Highlight:---
 export const addStoryHighlight = async (payload: addStoryHighlightPayload) => {
-  const response = await axiosInstance.post("/api/add_story_hightlight", payload);
+  const response = await axiosInstance.post(
+    "/api/add_story_hightlight",
+    payload
+  );
   return response.data;
 };
 
@@ -45,7 +64,12 @@ export const myStoryDelete = async (payload: myStoryDeletePayload) => {
 };
 
 // second User Story Highlight:---
-export const secondUserStoryHighlight = async (payload: secondUserStoryHighlightPayload) => {
-  const response = await axiosInstance.post("/api/second_user_story_hightlight", payload);
+export const secondUserStoryHighlight = async (
+  payload: secondUserStoryHighlightPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/second_user_story_hightlight",
+    payload
+  );
   return response.data;
 };

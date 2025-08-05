@@ -104,7 +104,7 @@ const Message = ({ className, item }: MessageProps) => {
             className={styles.name}
             href={item.from_user ? `/profiles/${item.from_user}` : "/profile"}
           >
-            {item.first_name || "Demo"}
+            {item?.post_user_name || item?.first_name}
           </Link>
           <div className={styles.date}>{item.chat_time}</div>
         </div>

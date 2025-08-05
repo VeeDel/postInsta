@@ -22,7 +22,7 @@ const EntryScreen = () => {
   const [resetPassword, setResetPassword] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
   const [mobileNumber, setMobilenumber] = useState("4673974998");
-
+  const [countryCode, setCountryCode] = useState("+1");
   const handleOTPVerify = (otpValue) => {
     // Handle OTP verification
     console.log("OTP entered:", otpValue);
@@ -78,8 +78,9 @@ const EntryScreen = () => {
 
                 <OtpVerify
                   mobileNumber={mobileNumber}
-                  onBack={handleBackToSignIn}
-                  onVerify={handleOTPVerify}
+                  // onBack={handleBackToSignIn}
+                  // onVerify={handleOTPVerify}
+                  countryCode={countryCode}
                 />
               </div>
             ) : resetPassword ? (
@@ -91,6 +92,8 @@ const EntryScreen = () => {
                 onResetPassword={() => setResetPassword(true)}
                 setMobilenumber={setMobilenumber}
                 mobileNumber={mobileNumber}
+                setCountryCode={setCountryCode}
+                countryCode={countryCode}
               />
             ) : (
               <SignUp onClick={() => setEntry(true)} />
