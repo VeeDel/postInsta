@@ -67,6 +67,7 @@ const Post = ({
       onClick: () => console.log("Feature post"),
     },
   ];
+  console.log("item", item);
 
   return (
     <div
@@ -115,9 +116,9 @@ const Post = ({
           />
         )}
         <div className={styles.content}>{item.content}</div>
-        {item.image && (
+        {item?.media?.url && (
           <div className={styles.image}>
-            <Image src={item.image} width={688} height={304} alt="" />
+            <Image src={item?.media?.url} width={688} height={304} alt="" />
           </div>
         )}
         {item.video && (
@@ -140,6 +141,7 @@ const Post = ({
             />
             <Comment item={item} />
             <Bookmark
+              item={item}
               className={styles.bookmark}
               initialBookmark={item.bookmark}
             />

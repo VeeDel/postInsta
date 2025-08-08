@@ -8,9 +8,10 @@ import { useAuthStore } from "@/store/authStore/authStore";
 import { useUserLoginStore } from "@/store/userstore/userStore";
 type OtpVerifyProps = {
   mobileNumber: string;
+  countryCode: string;
 };
 
-const OtpVerify = ({ mobileNumber }: OtpVerifyProps) => {
+const OtpVerify = ({ mobileNumber, countryCode }: OtpVerifyProps) => {
   const { setUserDetails } = useUserLoginStore();
   const [otp, setOtp] = useState(["", "", "", ""]);
   const router = useRouter();
@@ -31,7 +32,7 @@ const OtpVerify = ({ mobileNumber }: OtpVerifyProps) => {
     try {
       const response = await checkOtp({
         mobile: mobileNumber,
-        country_code: "+1",
+        country_code: countryCode,
         otp: otp.join(""),
       });
       if (response?.status === "success") {

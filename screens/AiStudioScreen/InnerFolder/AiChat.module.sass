@@ -1,0 +1,262 @@
+@import '@/styles/variables'
+
+.modelResponse 
+    background: rgba($n2, 0.02)
+    border: 1px solid rgba($n3, 0.1)
+    border-radius: 16px
+    padding: 16px
+    margin: 12px 0
+    transition: all 0.3s ease
+    
+    &:hover 
+        background: rgba($n3, 0.05)
+        border-color: rgba($n3, 0.15)
+    
+
+
+.header 
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 12px
+    padding-bottom: 8px
+    border-bottom: 1px solid rgba($n3, 0.08)
+
+
+.modelName 
+    display: flex
+    align-items: center
+    gap: 8px
+    font-weight: 600
+    color: rgba($n2, 0.8)
+    font-size: 14px
+
+
+.modelIcon 
+    font-size: 16px
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 24px
+    height: 24px
+    border-radius: 6px
+    background: rgba($n3, 0.1)
+
+
+.status 
+    font-size: 12px
+    color: rgba($n2, 0.6)
+    padding: 4px 8px
+    border-radius: 8px
+    background: rgba($n3, 0.08)
+
+
+.content 
+    display: flex
+    flex-direction: column
+    gap: 12px
+
+
+.prompt 
+    color: rgba($n2, 0.76)
+    font-size: 13px
+    line-height: 1.4
+    padding: 8px 12px
+    background: rgba($n3, 0.05)
+    border-radius: 8px
+    border-left: 3px solid rgba($n2, 0.2)
+
+
+.inputPreview 
+    display: flex
+    gap: 12px
+    align-items: flex-start
+
+
+.imageContainer 
+    position: relative
+    display: inline-block
+
+
+.inputImage 
+    width: 120px
+    height: 120px
+    object-fit: cover
+    border-radius: 12px
+    border: 2px solid rgba($n3, 0.15)
+    
+    @media (max-width: 768px) 
+        width: 100px
+        height: 100px
+    
+
+
+.imageLabel 
+    position: absolute
+    bottom: -8px
+    left: 50%
+    transform: translateX(-50%)
+    background: rgba($n2, 0.9)
+    color: white
+    padding: 2px 8px
+    border-radius: 4px
+    font-size: 10px
+    font-weight: 500
+
+
+.generationProgress 
+    display: flex
+    align-items: center
+    gap: 12px
+    padding: 16px 20px
+    background: rgba(68, 68, 68, 0.9)
+    border-radius: 12px
+    border: 1px solid rgba(85, 85, 85, 0.6)
+    max-width: 200px
+    backdrop-filter: blur(10px)
+
+
+.progressText 
+    font-size: 14px
+    color: #ffffff
+    font-weight: 400
+    white-space: nowrap
+
+
+.loadingAnimation 
+    display: flex
+    align-items: center
+    justify-content: center
+
+
+.spinner 
+    width: 16px
+    height: 16px
+    border: 2px solid rgba(255, 255, 255, 0.3)
+    border-left: 2px solid #ffffff
+    border-radius: 50%
+    animation: spin 1s linear infinite
+
+
+.progressBar 
+    display: none
+
+
+.progressFill 
+    display: none
+
+
+.generatedImage 
+    width: 100%
+    max-width: 512px
+    height: auto
+    border-radius: 12px
+    border: 2px solid rgba($n3, 0.15)
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+    transition: all 0.3s ease
+    
+    &:hover 
+        transform: translateY(-2px)
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15)
+    
+
+
+.imageResult 
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 8px
+    margin-top: 8px
+
+
+.imageActions 
+    display: flex
+    gap: 8px
+    margin-top: 8px
+
+
+.actionButton 
+    padding: 6px 12px
+    border: 1px solid rgba($n3, 0.2)
+    background: rgba($n3, 0.05)
+    color: rgba($n2, 0.7)
+    border-radius: 6px
+    font-size: 12px
+    cursor: pointer
+    transition: all 0.2s ease
+    
+    &:hover 
+        background: rgba($n3, 0.1)
+        color: rgba($n2, 0.9)
+        border-color: rgba($n3, 0.3)
+    
+
+
+.textToImage 
+    .modelIcon 
+        background: linear-gradient(135deg, #ff6b6b, #4ecdc4)
+    
+    
+    .progressFill 
+        background: linear-gradient(90deg, #ff6b6b, #4ecdc4)
+    
+
+
+.imageToImage 
+    .modelIcon 
+        background: linear-gradient(135deg, #a8e6cf, #4ecdc4)
+    
+    
+    .progressFill 
+        background: linear-gradient(90deg, #a8e6cf, #4ecdc4)
+    
+
+
+@keyframes spin 
+    0% 
+        transform: rotate(0deg)
+    
+    100% 
+        transform: rotate(360deg)
+    
+
+
+@keyframes progressShimmer 
+    0% 
+        background-position: -200px 0
+    
+    100% 
+        background-position: calc(200px + 100%) 0
+    
+
+
+@media (max-width: 768px) 
+    .modelResponse 
+        padding: 12px
+        margin: 8px 0
+    
+    
+    .header 
+        margin-bottom: 8px
+    
+    
+    .content 
+        gap: 8px
+    
+    
+    .prompt 
+        padding: 6px 10px
+        font-size: 12px
+    
+    
+    .generationProgress 
+        padding: 8px
+    
+    
+    .progressText 
+        font-size: 11px
+    
+    
+    .generatedImage 
+        max-width: 100%
+    

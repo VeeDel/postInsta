@@ -1,0 +1,58 @@
+export const aifolders = [
+    {
+        id: "0",
+        name: "Text to image",
+        // counter: 83,
+        icon: "tools",
+        iconColor: "#A5A5A4",
+    },
+    {
+        id: "1",
+        name: "Image to Image",
+        // counter: 15,
+        icon: "card",
+        iconColor: "#A5A5A4",
+    },
+    // {
+    //     id: "1",
+    //     name: "Image to text",
+    //     counter: 5,
+    //     icon: "stars",
+    //     iconColor: "#A5A5A4",
+    // },
+    // {
+    //     id: "2",
+    //     name: "Face swap",
+    //     counter: 7,
+    //     icon: "tools",
+    //     iconColor: "#A5A5A4",
+    // },
+    // {
+    //     id: "4",
+    //     name: "Backgroud remove",
+    //     counter: 10,
+    //     icon: "earth",
+    //     iconColor: "#A5A5A4",
+    // },
+    // {
+    //     id: "5",
+    //     name: "Ideas",
+    //     counter: 15,
+    //     icon: "heart",
+    //     iconColor: "#A5A5A4",
+    // },
+    // {
+    //     id: "6",
+    //     name: "templets",
+    //     counter: 23,
+    //     icon: "mobile",
+    //     iconColor: "#A5A5A4",
+    // },
+    // {
+    //     id: "7",
+    //     name: "Tutorial",
+    //     counter: 18,
+    //     icon: "edit",
+    //     iconColor: "#A5A5A4",
+    // },
+];
