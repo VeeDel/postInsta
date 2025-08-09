@@ -12,6 +12,7 @@ import { useUserStore } from "@/store/userstore/userStore";
 
 const ProfileEditScreen = () => {
   const { user } = useUserStore();
+  console.log("user in edit", user);
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -57,10 +58,10 @@ const ProfileEditScreen = () => {
     setIsLoading(true);
     const formData = new FormData();
 
-    // formData.append("user_id", user?.user_id || "");
-    formData.append("user_id", "1");
+    formData.append("user_id", user?.id || "");
+    // formData.append("user_id", "1");
     formData.append("first_name", name);
-    formData.append("last_name", user?.last_name || "");
+    formData.append("last_name", "");
     formData.append("email", user?.email || "");
     formData.append("username", username);
     formData.append("bio", bio);
