@@ -1,5 +1,5 @@
 import { axiosInstance } from "../axiosInstance";
-import { addReelPayload, allMyPostPaginationPayload, allMyTagPostPaginationPayload, allMyTagPostPayload, allTagPostUserPayload, bookmarkPostPayload, commentLikeReelPayload, getReelDetailsPayload, likeReelPayload, postOnCommentPayload, postReplyOnCommentPayload, postSubcommentAddReplyPayload, reelAddCommentPayload, reelAddReportPayload, reelAddSubcommentPayload, reelOnCommentPayload, reelReplyOnCommentPayload, reelSubcommentAddReplyPayload, replyLikePostPayload, replyLikeReelPayload, savePostPayload, secondUserAllPostAndReelPayload, secondUserAllPostPaginationPayload, secondUserAllPostPayload, secondUserTagPostPaginationPayload, secondUserTagPostPayload, subCommentLikeReelPayload } from './postInterface';
+import { addReelPayload, allMyPostPaginationPayload, allMyReelPaginationPayload, allMyTagPostPaginationPayload, allMyTagPostPayload, allTagPostUserPayload, bookmarkPostPayload, commentLikeReelPayload, getReelDetailsPayload, likeReelPayload, postOnCommentPayload, postReplyOnCommentPayload, postSubcommentAddReplyPayload, reelAddCommentPayload, reelAddReportPayload, reelAddSubcommentPayload, reelOnCommentPayload, reelReplyOnCommentPayload, reelSubcommentAddReplyPayload, replyLikePostPayload, replyLikeReelPayload, savePostPayload, secondUserAllPostAndReelPayload, secondUserAllPostPaginationPayload, secondUserAllPostPayload, secondUserAllReelPaginationPayload, secondUserAllReelPayload, secondUserTagPostPaginationPayload, secondUserTagPostPayload, subCommentLikeReelPayload } from './postInterface';
 import {
   addPostPayload,
   commentLikePostPayload,
@@ -73,15 +73,19 @@ export const getAllLatestReelByPagination = async (
 };
 
 // Add Post:---
-export const addPost = async (payload: addPostPayload) => {
-  const response = await axiosInstance.post("/api/add_post", payload);
-  return response.data;
+export const addPost = async (payload: FormData) => {
+  const response = await axiosInstance.post("/api/add_post", payload, {
+    headers: {
+      "Content-Type": "multipart/form-data", // optional — axios usually handles this if you pass FormData
+    },
+  });
+  return response;
 };
 
 // get Post Details:---
 export const getPostDetails = async (payload: getPostDetailsPayload) => {
   const response = await axiosInstance.post("/api/get_post_details", payload);
-  return response.data;
+  return response;
 };
 // get All latest Post :---
 export const getAllLatestPost = async () => {
@@ -140,8 +144,13 @@ export const myPostLikeList = async (payload: myPostLikeListPayload) => {
 };
 
 // get all latest reel and post pagination:---
-export const getAllLatestReelAndPosts = async (payload: getAllLatestReelAndPostsPayload) => {
-  const response = await axiosInstance.post("/api/get_all_latest_reel_and_post_pagination", payload);
+export const getAllLatestReelAndPosts = async (
+  payload: getAllLatestReelAndPostsPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/get_all_latest_reel_and_post_pagination",
+    payload
+  );
   return response.data;
 };
 
@@ -152,15 +161,24 @@ export const postAddComment = async (payload: postAddCommentPayload) => {
 };
 
 // post Subcomment Add Reply:---
-export const postSubcommentAddReply = async (payload: postSubcommentAddReplyPayload) => {
-  const response = await axiosInstance.post("/api/post_subcomment_add_reply", payload);
+export const postSubcommentAddReply = async (
+  payload: postSubcommentAddReplyPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/post_subcomment_add_reply",
+    payload
+  );
   return response.data;
 };
 
-
 // reel Subcomment Add Reply:---
-export const reelSubcommentAddReply = async (payload: reelSubcommentAddReplyPayload) => {
-  const response = await axiosInstance.post("/api/reel_subcomment_add_reply", payload);
+export const reelSubcommentAddReply = async (
+  payload: reelSubcommentAddReplyPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/reel_subcomment_add_reply",
+    payload
+  );
   return response.data;
 };
 
@@ -172,7 +190,10 @@ export const replyLikePost = async (payload: replyLikePostPayload) => {
 
 // Reel Add Comment :---
 export const reelAddComment = async (payload: reelAddCommentPayload) => {
-  const response = await axiosInstance.post("/api/reel_subcomment_add_reply", payload);
+  const response = await axiosInstance.post(
+    "/api/reel_subcomment_add_reply",
+    payload
+  );
   return response.data;
 };
 
@@ -184,13 +205,21 @@ export const commentLikeReel = async (payload: commentLikeReelPayload) => {
 
 // Reel Add Subcomment :---
 export const reelAddSubcomment = async (payload: reelAddSubcommentPayload) => {
-  const response = await axiosInstance.post("/api/reel_add_subcomment", payload);
+  const response = await axiosInstance.post(
+    "/api/reel_add_subcomment",
+    payload
+  );
   return response.data;
 };
 
 // SubComment Like Reel :---
-export const subCommentLikeReel = async (payload: subCommentLikeReelPayload) => {
-  const response = await axiosInstance.post("/api/sub_comment_like_reel", payload);
+export const subCommentLikeReel = async (
+  payload: subCommentLikeReelPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/sub_comment_like_reel",
+    payload
+  );
   return response.data;
 };
 
@@ -219,44 +248,77 @@ export const reelOnComment = async (payload: reelOnCommentPayload) => {
 };
 
 // Post Reply On Comment :---
-export const postReplyOnComment = async (payload: postReplyOnCommentPayload) => {
-  const response = await axiosInstance.post("/api/post_reply_on_comment", payload);
+export const postReplyOnComment = async (
+  payload: postReplyOnCommentPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/post_reply_on_comment",
+    payload
+  );
   return response.data;
 };
 
 // Reel Reply on Comment :---
-export const reelReplyOnComment = async (payload: reelReplyOnCommentPayload) => {
-  const response = await axiosInstance.post("/api/reel_reply_on_comment", payload);
+export const reelReplyOnComment = async (
+  payload: reelReplyOnCommentPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/reel_reply_on_comment",
+    payload
+  );
   return response.data;
 };
 
 // All My Post Pagination :---
-export const allMyPostPagination = async (payload: allMyPostPaginationPayload) => {
-  const response = await axiosInstance.post("/api/all_my_post_pagination", payload);
+export const allMyPostPagination = async (
+  payload: allMyPostPaginationPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/all_my_post_pagination",
+    payload
+  );
   return response.data;
 };
 
 // All My Tag Post Pagination :---
-export const allMyTagPostPagination = async (payload: allMyTagPostPaginationPayload) => {
-  const response = await axiosInstance.post("/api/all_my_tag_post_pagination", payload);
+export const allMyTagPostPagination = async (
+  payload: allMyTagPostPaginationPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/all_my_tag_post_pagination",
+    payload
+  );
   return response.data;
 };
 
 // Second User All Post Pagiination :---
-export const secondUserAllPostPagination = async (payload: secondUserAllPostPaginationPayload) => {
-  const response = await axiosInstance.post("/api/second_user_all_post_pagination", payload);
+export const secondUserAllPostPagination = async (
+  payload: secondUserAllPostPaginationPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/second_user_all_post_pagination",
+    payload
+  );
   return response.data;
 };
 
 // Second User Tag Post Pagination :---
-export const secondUserTagPostPagination = async (payload: secondUserTagPostPaginationPayload) => {
-  const response = await axiosInstance.post("/api/second_user_tag_post_pagination", payload);
+export const secondUserTagPostPagination = async (
+  payload: secondUserTagPostPaginationPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/second_user_tag_post_pagination",
+    payload
+  );
   return response.data;
 };
 
 // Second User All Post :---
 export const secondUserAllPost = async (payload: secondUserAllPostPayload) => {
-  const response = await axiosInstance.post("/api/second_user_all_post", payload);
+  const response = await axiosInstance.post(
+    "/api/second_user_all_post",
+    payload
+  );
   return response.data;
 };
 
@@ -266,7 +328,6 @@ export const allMyTagPost = async (payload: allMyTagPostPayload) => {
   return response.data;
 };
 
-
 // All Tag Post User :---
 export const allTagPostUser = async (payload: allTagPostUserPayload) => {
   const response = await axiosInstance.post("/api/all_tag_post_user", payload);
@@ -275,17 +336,23 @@ export const allTagPostUser = async (payload: allTagPostUserPayload) => {
 
 // Second User Tag Post :---
 export const secondUserTagPost = async (payload: secondUserTagPostPayload) => {
-  const response = await axiosInstance.post("/api/second_user_tag_post", payload);
+  const response = await axiosInstance.post(
+    "/api/second_user_tag_post",
+    payload
+  );
   return response.data;
 };
-
 
 // Second User All Post And Reel :---
-export const secondUserAllPostAndReel = async (payload: secondUserAllPostAndReelPayload) => {
-  const response = await axiosInstance.post("/api/second_user_all_post_and_reel", payload);
+export const secondUserAllPostAndReel = async (
+  payload: secondUserAllPostAndReelPayload
+) => {
+  const response = await axiosInstance.post(
+    "/api/second_user_all_post_and_reel",
+    payload
+  );
   return response.data;
 };
-
 
 // reply Like Reel :---
 export const replyLikeReel = async (payload: replyLikeReelPayload) => {
@@ -299,13 +366,11 @@ export const addReel = async (payload: addReelPayload) => {
   return response.data;
 };
 
-
 // get Reel Details :---
 export const getReelDetails = async (payload: getReelDetailsPayload) => {
   const response = await axiosInstance.post("/api/get_reel_details", payload);
   return response.data;
 };
-
 
 // Like Reel :---
 export const likeReel = async (payload: likeReelPayload) => {
@@ -314,9 +379,93 @@ export const likeReel = async (payload: likeReelPayload) => {
 };
 
 
-// Like Reel :---
+// Reel Add Report :---
 export const reelAddReport = async (payload: reelAddReportPayload) => {
   const response = await axiosInstance.post("/api/reel_add_report", payload);
   return response.data;
 };
+
+// all My Reel Pagination :---
+export const allMyReelPagination = async (payload: allMyReelPaginationPayload) => {
+  const response = await axiosInstance.post("/api/all_my_reel_pagination", payload);
+  return response.data;
+};
+
+// second User All Reel Pagination :---
+export const secondUserAllReelPagination = async (payload: secondUserAllReelPaginationPayload) => {
+  const response = await axiosInstance.post("/api/second_user_all_reel_pagination", payload);
+  return response.data;
+};
+
+// second User All Reel  :---
+export const secondUserAllReel = async (payload: secondUserAllReelPayload) => {
+  const response = await axiosInstance.post("/api/second_user_all_reel", payload);
+  return response.data;
+};
+
+
+// Reel Add Report :---
+export const allMyReel = async () => {
+  const response = await axiosInstance.post("/api/all_my_reel");
+  return response.data;
+};
+
+
+// get All Reels Data :---
+export const getAllReelsData = async () => {
+  const response = await axiosInstance.post("/api/get_all_reels_datainshow");
+  return response.data;
+};
+
+
+// get Hashtags List :---
+export const getHashtagsList = async () => {
+  const response = await axiosInstance.post("/api/get_hashtags_list");
+  return response.data;
+};
+
+
+// my Reel like List :---
+export const myReelLikeList = async () => {
+  const response = await axiosInstance.post("/api/my_reel_like_list");
+  return response.data;
+};
+
+
+
+// get All Music :---
+export const getAllMusic = async () => {
+  const response = await axiosInstance.post("/api/get_all_music");
+  return response.data;
+};
+
+
+
+// Bookmark Post List :---
+export const bookmarkPostList = async () => {
+  const response = await axiosInstance.post("/api/bookmark_post_list");
+  return response.data;
+};
+
+
+
+
+// Get All Latest Reel and Post :---
+export const getAllLatestReelAndPost = async () => {
+  const response = await axiosInstance.post("/api/get_all_latest_reel_and_post_pagination");
+  return response.data;
+};
+
+
+
+
+// All My Post :---
+export const allMyPost = async () => {
+  const response = await axiosInstance.post("/api/all_my_post");
+  return response.data;
+};
+
+
+
+
 

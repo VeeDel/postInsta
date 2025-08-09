@@ -15,7 +15,7 @@ export const userDisconnected = async (payload: userDisconnectedPayload) => {
 
 
 
-// User DisConnected:---
+// User Connect Server:---
 export const connectServer = async (payload: connectServerPayload) => {
   const response = await axiosInstance.post("/api/connect_server", payload);
   return response.data;

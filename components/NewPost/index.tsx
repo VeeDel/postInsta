@@ -7,6 +7,8 @@ import useEventsStore from "@/store/useEventsStore";
 import styles from "./NewPost.module.sass";
 import { addPost, postAddComment } from "services/api/post/postServices";
 import Icon from "../Icon";
+import toast from "react-hot-toast";
+import { useUserLoginStore } from "@/store/userstore/userStore";
 
 type NewPostProps = {
   item: any;
@@ -40,6 +42,8 @@ const NewPost = ({
   const { isNewPost } = useEventsStore();
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const { userDetails } = useUserLoginStore();
+  const { profile_pic, first_name, username } = userDetails || {};
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContent(event.target.value);
@@ -47,7 +51,6 @@ const NewPost = ({
 
   const handleImageSelect = (file: File) => {
     setSelectedImage(file);
-    // Create image preview URL
     const previewUrl = URL.createObjectURL(file);
     setImagePreview(previewUrl);
   };
@@ -61,40 +64,47 @@ const NewPost = ({
   };
 
   const handleAddPostOrReply = async () => {
-    if (!content || content.trim() === "") {
-      return;
+    const isContentEmpty = !content || content.trim() === "";
+    const isImageEmpty = !selectedImage;
+
+    if (reply) {
+      if (isContentEmpty) {
+        toast.error("Reply must contain content.");
+        return;
+      }
+    } else {
+      if (isContentEmpty && isImageEmpty) {
+        toast.error("Post must contain either content or an image.");
+        return;
+      }
     }
+
     try {
-      // Check if reply is true to decide which function to call
       if (reply) {
         await handleReply();
       } else {
         await handlePost();
       }
 
-      // Clear content and image after successful API call
       setContent("");
       removeImage();
     } catch (error) {
       console.error("Error in posting:", error);
+      toast.error("Something went wrong while posting.");
     }
   };
-  console.log("selected image", selectedImage);
+
   const handlePost = async () => {
     try {
       const formData = new FormData();
       formData.append("content", content);
 
-      // Add image to formData if selected
       if (selectedImage) {
         formData.append("image", selectedImage);
       }
 
-      console.log("formdata", formData);
-
-      // const res = await addPost(formData);
-      // console.log("response of image upload", res);
-      // return res;
+      const res = await addPost(formData);
+      return res;
     } catch (error) {
       console.error(error);
       throw error;
@@ -138,7 +148,12 @@ const NewPost = ({
     >
       <div className={styles.head}>
         <div className={styles.avatar}>
-          <Image src="/images/avatar.png" width={44} height={44} alt="" />
+          <Image
+            src={profile_pic ?? "/images/avatar.png"}
+            width={44}
+            height={44}
+            alt=""
+          />
         </div>
         <div className={styles.wrap}>
           <div className={styles.field}>

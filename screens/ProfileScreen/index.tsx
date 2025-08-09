@@ -13,7 +13,6 @@ import { getAllLatestPost } from "services/api/post/postServices";
 const ProfileScreen = () => {
   // zustang imports:-----
   const { userDetails } = useUserLoginStore();
-
   // usestate imports:-----
   const { setUser, user } = useUserStore();
   const [userPosts, setUserPosts] = useState([]);
@@ -23,12 +22,11 @@ const ProfileScreen = () => {
   const fetchProfile = async (userId) => {
     try {
       setLoading(true);
-      const payload = { to_user_id: "10" };
+      const payload = { to_user_id: userId };
       const res = await userProfile(payload);
       console.log(res);
 
       setUser(res?.user_data);
-      setUserPosts(res?.rescent_post || []);
     } catch (error) {
       console.error("Profile fetch error:", error);
       setError("Failed to load profile");

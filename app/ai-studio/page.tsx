@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import BookmarksScreen from "@/screens/BookmarksScreen";
+import AiStudioScreen from "@/screens/AiStudioScreen";
 
-const Bookmarks: NextPage = () => {
-  return <BookmarksScreen />;
+const aiStudio: NextPage = () => {
+  return <AiStudioScreen />;
 };
 
-export default Bookmarks;
+export default aiStudio;

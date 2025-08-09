@@ -200,6 +200,22 @@ export interface likeReelPayload {
 }
 
 export interface reelAddReportPayload {
+  reel_id:string;
+  report_text_id:string;
+}
+
+export interface allMyReelPaginationPayload {
+  page_no:number;
+  per_page:number;
+}
+
+export interface secondUserAllReelPaginationPayload {
+  page_no:number;
+  per_page: number;
+}
+
+export interface secondUserAllReelPayload {
+  to_user_id:number;
   reel_id: string;
   report_text_id: string;
 }

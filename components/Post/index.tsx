@@ -67,7 +67,7 @@ const Post = ({
       onClick: () => console.log("Feature post"),
     },
   ];
-  console.log("item", item);
+  console.log("item in postScreen", item);
 
   return (
     <div
@@ -116,9 +116,9 @@ const Post = ({
           />
         )}
         <div className={styles.content}>{item.content}</div>
-        {item?.media?.url && (
+        {item?.image && (
           <div className={styles.image}>
-            <Image src={item?.media?.url} width={688} height={304} alt="" />
+            <Image src={item?.image} width={688} height={304} alt="" />
           </div>
         )}
         {item.video && (
