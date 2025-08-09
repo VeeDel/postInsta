@@ -14,11 +14,11 @@ import useEventsStore from "@/store/useEventsStore";
 import ResultSearch from "./ResultSearch";
 import Header from "./Header";
 import styles from "./HomeScreen.module.sass";
-
 import { posts } from "@/mocks/posts";
 import { useAuthStore } from "@/store/authStore/authStore";
 import StoryList from "@/components/StoryList/StoryList";
 import { getAllLatestPost } from "services/api/post/postServices";
+import { usePostsStore } from "@/store/postsStore/usePostStore";
 
 const HomeScreen = () => {
   const [tab, setTab] = useState<string>("for-you");
@@ -62,6 +62,13 @@ const HomeScreen = () => {
       onClick: handleTabClick,
     },
   ];
+
+  //functionality for the dynamic posts:----
+  const { posts, loading, error, fetchPosts } = usePostsStore();
+
+  useEffect(() => {
+    fetchPosts(); // Fetch on mount
+  }, [fetchPosts]);
 
   const filteredPosts = posts.filter(
     (post) => tab === "for-you" || (tab === "following" && post.following)

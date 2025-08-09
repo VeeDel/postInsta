@@ -95,7 +95,10 @@ const Follower = ({
             />
           )}
           {isBlocked ? (
-            <button className={cn("button", styles.buttonBlocked)}>
+            <button
+              onClick={() => actions[0]?.onClick()}
+              className={cn("button", styles.buttonBlocked)}
+            >
               Unblock
               <Icon name="close-large" />
             </button>
