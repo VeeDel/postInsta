@@ -87,7 +87,7 @@ const StoryList = () => {
                   />
                 </div>
                 <span className={styles.username}>
-                  {story.username.length > 8
+                  {story?.username?.length > 8
                     ? `${story.username.slice(0, 8)}…`
                     : story.username}
                 </span>
