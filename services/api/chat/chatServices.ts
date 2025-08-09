@@ -48,3 +48,18 @@ export const newMessageList = async (payload: newMessageListPayload) => {
   const response = await axiosInstance.post("/api/new_message_list", payload);
   return response.data;
 };
+
+
+//get Report Text:----
+// export const getReportText = async (payload: getReportTextPayload) => {
+//   const response = await axiosInstance.post("/api/get_report_text", payload);
+//   return response.data;
+// };
+
+
+//user Chat List:----
+export const getUserChatList = async () => {
+  const response = await axiosInstance.post("/api/user_chat_list");
+  return response.data;
+};
+

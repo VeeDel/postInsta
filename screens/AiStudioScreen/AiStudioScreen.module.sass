@@ -1,0 +1,47 @@
+@import @/styles/variables
+
+div.sidebarLeft
+    background: rgba($n3, .9)
+
+.row
+    +m
+        .container
+            display: none
+        &.visibleMobile
+            .sidebar
+                display: none
+            .container
+                display: block
+
+.head
+    display: flex
+    padding: 12px
+
+.search
+    flex-grow: 1
+    margin-right: 8px
+    transition: opacity .2s
+    &.hide
+        opacity: 0.1
+        pointer-events: none
+
+.add
+    flex-shrink: 0
+    margin-left: auto
+    svg
+        transition: transform .2s
+    &.active
+        transform: rotate(45deg)
+
+.body
+    height: calc(100svh - 68px)
+    padding: 0 12px 12px
+    &.bodyNewFolder
+        // overflow: hidden
+        // mask-image: none
+
+.newFolder
+    margin-top: 8px
+
+.folders
+    margin-top: -8px

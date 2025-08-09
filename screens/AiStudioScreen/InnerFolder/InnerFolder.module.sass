@@ -1,0 +1,300 @@
+@import @/styles/variables
+
+.container
+    display: flex
+    flex-direction: column
+    height: 100vh
+    height: 100dvh // Use dynamic viewport height for better mobile support
+    overflow: hidden
+    position: relative
+
+.head
+    display: flex
+    padding: 12px
+    gap: 8px
+    flex-shrink: 0
+    border-bottom: 1px solid rgba($n3, 0.1)
+    position: relative
+    z-index: 10
+
+.tabs
+    flex-shrink: 0
+    width: 378px
+    +w
+        width: 320px
+    +d
+        width: 280px
+    +t
+        width: auto
+        flex-grow: 1
+
+.back
+    display: none
+    +m
+        display: inline-flex
+
+.search
+    flex-grow: 1
+    +t
+        display: none
+
+.actions
+    margin-left: auto
+
+.content
+    display: flex
+    flex-direction: column
+    flex: 1
+    min-height: 0
+    overflow: hidden
+    position: relative
+    // Mobile fix - prevent content expansion
+    +m
+        height: calc(100vh - 160px) // Account for header + mobile nav + chat input
+        height: calc(100dvh - 160px)
+        max-height: calc(100vh - 160px)
+        max-height: calc(100dvh - 160px)
+
+.body
+    flex: 1
+    padding: 0 12px
+    padding-bottom: 20px // Add bottom padding to prevent content from being hidden
+    overflow-y: auto
+    min-height: 0
+    +m
+        padding-bottom: 20px // Reduced padding on mobile
+
+// Fixed chat history container with proper scrolling
+.chatHistoryContainer
+    flex: 1
+    overflow-y: auto
+    padding: 20px 12px
+    display: flex
+    flex-direction: column
+    gap: 12px // Reduced gap between messages
+    min-height: 0
+    // Smooth scrolling
+    scroll-behavior: smooth
+    -webkit-overflow-scrolling: touch
+    // Fix for mobile viewport - CRITICAL FIX
+    +m
+        padding-bottom: 160px // Space for fixed chat input + mobile nav
+        // Prevent content from being pushed down
+        flex: 1
+        max-height: calc(100vh - 240px) // Account for header + chat input + nav
+        max-height: calc(100dvh - 240px)
+        overflow-y: auto
+        position: relative
+    
+    // Custom scrollbar styling
+    &::-webkit-scrollbar
+        width: 6px
+    &::-webkit-scrollbar-track
+        background: transparent
+    &::-webkit-scrollbar-thumb
+        background: rgba($n3, 0.3)
+        border-radius: 3px
+        &:hover
+            background: rgba($n3, 0.5)
+
+.chatContent
+    display: flex
+    flex-direction: column
+    height: 100%
+    min-height: 0
+
+.chatHistory
+    flex: 1
+    min-height: 0
+    padding: 20px 0
+    display: flex
+    flex-direction: column
+    gap: 16px
+
+.message
+    padding: 12px 16px // Reduced vertical padding
+    border-radius: 16px
+    max-width: 80%
+    word-wrap: break-word
+    
+    &.userMessage
+        align-self: flex-end
+        background: rgba($n3, 0.1)
+        border: 1px solid rgba($n3, 0.2)
+        
+    &.aiMessage
+        align-self: flex-start
+        background: rgba($n2, 0.05)
+        border: 1px solid rgba($n2, 0.1)
+        // Special styling for image-only messages
+        &:has(.messageImage):not(:has(.messageContent:not(:empty)))
+            padding: 8px // Even smaller padding for image-only messages
+            background: transparent
+            border: none
+    
+    &.loadingMessage
+        align-self: flex-start
+        background: rgba($n2, 0.08)
+        border: 1px solid rgba($n2, 0.15)
+        animation: pulse 2s infinite
+    
+    &.errorMessage
+        align-self: flex-start
+        background: rgba(#ff4444, 0.1)
+        border: 1px solid rgba(#ff4444, 0.2)
+        color: #ff4444
+
+.messageHeader
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 6px // Reduced margin
+    font-size: 12px
+    opacity: 0.7
+
+.messageSender
+    font-weight: 600
+    
+.messageTime
+    font-size: 11px
+
+.messageImage
+    margin-bottom: 6px // Reduced margin
+    border-radius: 12px
+    overflow: hidden
+    // FIXED: Smaller image containers
+    max-width: 200px // Reduced from 250px
+    width: auto
+    +m
+        max-width: 180px // Reduced from 200px
+    
+    .clickableImage
+        width: 100%
+        height: auto
+        max-height: 180px // Reduced from 200px
+        object-fit: cover
+        border-radius: 12px
+        display: block
+        cursor: pointer
+        transition: transform 0.2s ease, box-shadow 0.2s ease
+        +m
+            max-height: 140px // Reduced from 150px
+        &:hover
+            transform: scale(1.02)
+            box-shadow: 0 4px 20px rgba($n2, 0.15)
+
+.messageContent
+    +body
+    color: rgba($n2, .76)
+    line-height: 1.5
+    word-break: break-word
+    // Hide empty content
+    &:empty
+        display: none
+
+.loadingIndicator
+    display: flex
+    align-items: center
+    gap: 8px
+    margin-bottom: 8px
+
+.spinner
+    width: 20px
+    height: 20px
+    border: 2px solid rgba($n2, 0.1)
+    border-left: 2px solid rgba($n2, 0.6)
+    border-radius: 50%
+    animation: spin 1s linear infinite
+
+@keyframes spin
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
+
+@keyframes pulse
+    0%, 100%
+        opacity: 1
+    50%
+        opacity: 0.7
+
+.emptyState
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 200px
+    color: rgba($n2, .4)
+    font-style: italic
+    margin: auto
+    text-align: center
+    padding: 20px
+
+// Fixed chat input wrapper - CRITICAL MOBILE FIXES
+.aiChatWrapper
+    position: sticky
+    bottom: 0
+    flex-shrink: 0
+    padding: 16px 12px
+    padding-bottom: calc(16px + env(safe-area-inset-bottom))
+    border-top: 1px solid rgba($n3, 0.1)
+    background: rgba($n3, 0.02)
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
+    z-index: 100
+    // Mobile specific fixes - ABOVE MOBILE NAVIGATION
+    +m
+        position: fixed !important
+        bottom: 80px !important // Space for mobile navigation
+        left: 0 !important
+        right: 0 !important
+        width: 100% !important
+        padding: 12px !important
+        padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important
+        background: rgba($n3, 0.98) !important
+        backdrop-filter: blur(20px) !important
+        -webkit-backdrop-filter: blur(20px) !important
+        box-shadow: 0 -2px 20px rgba($n2, 0.1) !important
+        border-top: 1px solid rgba($n3, 0.2) !important
+        // Ensure it stays visible above content but below navigation
+        z-index: 500 !important
+        // Prevent any layout shifts
+        transform: none !important
+        margin: 0 !important
+
+.aiChatComponent
+    margin: 0
+    background: rgba($n2, .02) !important
+    &:hover
+        background: rgba($n3, .08) !important
+    &.active
+        background: rgba($n3, .05) !important
+    // Mobile specific styling
+    +m
+        background: rgba($n2, .08) !important
+        border: 1px solid rgba($n3, 0.15)
+        &:hover
+            background: rgba($n3, .12) !important
+        &.active
+            background: rgba($n3, .1) !important
+
+.posts
+    margin-top: -8px
+
+.images
+    display: flex
+    flex-wrap: wrap
+    margin: -8px -4px 0
+
+.image
+    width: calc(25% - 8px)
+    margin: 8px 4px 0
+    +r(1179)
+        width: calc(33.333% - 8px)
+    +t
+        width: calc(50% - 8px)
+    img
+        width: 100%
+        height: auto
+        object-fit: cover
+        border-radius: 24px
+
