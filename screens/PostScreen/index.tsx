@@ -98,8 +98,8 @@ const PostScreen = ({ postId }: { postId: string }) => {
               />
               <ScrollMask className={styles.group}>
                 <Replies />
-                <Post item={posts[4]} />
-                <Post item={posts[0]} actionsBodyUp />
+                {/* <Post item={posts[4]} />
+                <Post item={posts[0]} actionsBodyUp /> */}
               </ScrollMask>
             </div>
           </div>
@@ -109,8 +109,8 @@ const PostScreen = ({ postId }: { postId: string }) => {
               <div className={styles.list}>
                 <Post className={styles.post} item={post} isNotLink />
                 <Replies />
-                <Post item={posts[2]} />
-                <Post item={posts[0]} actionsBodyUp />
+                {/* <Post item={posts[2]} />
+                <Post item={posts[0]} actionsBodyUp /> */}
               </div>
             </ScrollMask>
             <NewPost

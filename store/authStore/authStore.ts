@@ -1,7 +1,7 @@
 // store/authStore.ts
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
+import Cookies from "js-cookie";
 interface AuthStore {
   token: string | null;
   setToken: (token: string) => void;
@@ -14,9 +14,11 @@ export const useAuthStore = create<AuthStore>()(
       token: null,
       setToken: (token) => {
         console.log("✅ Token set:", token);
+        Cookies.set("auth_token", token);
         set({ token });
       },
       clearToken: () => {
+        Cookies.remove("auth_token");
         console.log("🧹 Token cleared");
         set({ token: null });
       },

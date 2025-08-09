@@ -51,6 +51,11 @@ interface UserStore {
   setUser: (data: UserProfile) => void;
   clearUser: () => void;
 }
+interface OtherPersonStore {
+  profile: UserProfile | null;
+  setUser: (data: UserProfile) => void;
+  clearUser: () => void;
+}
 
 interface UserDetailsStore {
   userDetails: LoginResponse | null;
@@ -69,6 +74,24 @@ export const useUserStore = create<UserStore>()(
       clearUser: () => {
         console.log("🧹 USER PROFILE CLEARED");
         set({ user: null });
+      },
+    }),
+    {
+      name: "user-profile-storage", // ✅ unique key
+    }
+  )
+);
+export const useOtherPersonStore = create<OtherPersonStore>()(
+  persist(
+    (set) => ({
+      profile: null,
+      setUser: (data) => {
+        console.log("✅ FULL USER PROFILE STORED:", data);
+        set({ profile: data });
+      },
+      clearUser: () => {
+        console.log("🧹 USER PROFILE CLEARED");
+        set({ profile: null });
       },
     }),
     {
